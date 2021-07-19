@@ -1,38 +1,82 @@
-.App {
-  text-align: center;
+.header {
+  height: 52px;
+  border-bottom: 1px solid lightgray;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header-content {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin: 10px 50px;
+}
+.header-picture {
+  height: 30px;
+}
+
+.header-button {
+  display: flex;
+}
+
+.button-connexion {
+  margin-right: 10px;
+}
+
+.button-connexion button {
+  background-color: white;
+  font-weight: bold;
+  border: 1px solid #49afb7;
+  color: #49afb7;
+  border-radius: 5px;
+  padding: 5px;
+  margin-left: 10px;
+}
+
+.button-sale {
+  background-color: #49afb7;
+  border: 1px solid#49AFB7;
+  border-radius: 5px;
   color: white;
+  font-weight: bold;
 }
 
-.App-link {
-  color: #61dafb;
+.block {
+  height: 100%;
+  display: flex;
+
+  box-sizing: border-box;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.block-background {
+  position: relative;
+}
+
+.block-accroche {
+  position: absolute;
+  height: 200px;
+  width: 300px;
+  background-color: white;
+  border-radius: 5px;
+  margin: 30px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.block-accroche button {
+  background-color: #49afb7;
+  font-weight: bold;
+  border: 1px solid #49afb7;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.images {
+  height: 100%;
+  width: 100%;
+}
+.images img {
+  height: 420px;
+  width: 100%;
+  object-fit: cover;
 }

@@ -17,6 +17,12 @@
   display: flex;
 }
 
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .button-connexion {
   margin-right: 10px;
 }
@@ -45,6 +51,7 @@
 
   box-sizing: border-box;
   align-items: center;
+  margin-bottom: 50px;
 }
 
 .block-background {
@@ -81,6 +88,22 @@
   object-fit: cover;
 }
 
-.offers {
-  background-color: aquamarine;
+.offer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.offer-card {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+.offer-card img {
+  object-fit: cover;
+  height: 500px;
+  width: 300px;
 }

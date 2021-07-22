@@ -4,6 +4,8 @@ import Banner from "../assets/pictures/banner_wide-9b45d0aa9a311c4ff6013e9cf3bc2
 
 import Loader from "react-loader-spinner";
 
+import { Link } from "react-router-dom";
+
 const Home = () => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -24,7 +26,13 @@ const Home = () => {
   return (
     <div>
       {isLoading ? (
-        <Loader type="ThreeDots" color="#00BFFF" height={80} width={80} />
+        <Loader
+          className="loader"
+          type="ThreeDots"
+          color="#49afb7"
+          height={80}
+          width={80}
+        />
       ) : (
         <div className="site">
           <div className="block">
@@ -41,9 +49,21 @@ const Home = () => {
           </div>
 
           <div className="offers">
-            <div className="annonces">
+            <div className="offer">
               {data.offers.map((offer, index) => {
-                return <div>{offer.product_name}</div>;
+                return (
+                  <Link to={`/offer/${offer._id}`} key={offer._id}>
+                    <div className="offer-card">
+                      <div>{offer.owner.account.username}</div>
+
+                      <img
+                        src={offer.product_image.secure_url}
+                        alt="product_image.secure_url"
+                      />
+                      <div>{offer.product_name}</div>
+                    </div>
+                  </Link>
+                );
               })}
             </div>
           </div>

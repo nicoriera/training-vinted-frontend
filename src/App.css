@@ -87,7 +87,7 @@
   object-fit: cover;
 }
 
-.offer {
+.offers {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -105,4 +105,31 @@
   object-fit: cover;
   height: 500px;
   width: 300px;
+}
+
+.offer-container {
+  align-items: center;
+  padding: 50px 20px;
+  height: 100rem;
+  background-color: rgb(231, 229, 229);
+}
+.offer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.offer-text {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 0 50px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  justify-content: center;
+}
+
+.offer img {
+  box-shadow: 5px 10px 20px grey;
+  object-fit: cover;
 }

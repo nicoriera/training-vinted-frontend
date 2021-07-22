@@ -48,8 +48,8 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="offers">
-            <div className="offer">
+          <div>
+            <div className="offers">
               {data.offers.map((offer, index) => {
                 return (
                   <Link to={`/offer/${offer._id}`} key={offer._id}>

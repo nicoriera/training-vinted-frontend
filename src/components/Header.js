@@ -13,8 +13,12 @@ const Header = () => {
 
             <div className="header-button">
               <div className="button-connexion">
-                <button>S'incrire</button>
-                <button>Se connecter</button>
+                <Link to="/signup">
+                  <button>S'incrire</button>
+                </Link>
+                <Link to="/login">
+                  <button>Se connecter</button>
+                </Link>
               </div>
 
               <button className="button-sale">Vends tes articles</button>

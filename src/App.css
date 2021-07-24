@@ -168,3 +168,31 @@
   display: flex;
   flex-direction: column;
 }
+
+/* Login */
+
+.container-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+.block-login {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.block-login > form {
+  display: flex;
+  flex-direction: column;
+  margin: 40px;
+}
+
+.button-login {
+  display: flex;
+
+  flex-direction: column;
+}

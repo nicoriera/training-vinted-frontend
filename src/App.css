@@ -1,38 +1,135 @@
-.App {
-  text-align: center;
+.header {
+  height: 52px;
+  border-bottom: 1px solid lightgray;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 50px;
+}
+.header-picture {
+  height: 30px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header-button {
+  display: flex;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.loader {
+  display: flex;
+  justify-content: center;
+}
+
+.button-connexion {
+  margin-right: 10px;
+}
+
+.button-connexion button {
+  background-color: white;
+  font-weight: bold;
+  border: 1px solid #49afb7;
+  color: #49afb7;
+  border-radius: 5px;
+  padding: 5px;
+  margin-left: 10px;
+}
+
+.button-sale {
+  background-color: #49afb7;
+  border: 1px solid#49AFB7;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+}
+
+.block {
+  height: 100%;
+  display: flex;
+
+  box-sizing: border-box;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.block-background {
+  position: relative;
+}
+
+.block-accroche {
+  position: absolute;
+  height: 200px;
+  width: 300px;
+  background-color: white;
+  border-radius: 5px;
+  margin: 30px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.block-accroche button {
+  background-color: #49afb7;
+  font-weight: bold;
+  border: 1px solid #49afb7;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.images {
+  height: 100%;
+  width: 100%;
+}
+.images img {
+  height: 420px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.offers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.offer-card {
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+.offer-card img {
+  object-fit: cover;
+  height: 500px;
+  width: 300px;
+}
+
+.offer-container {
   align-items: center;
+  padding: 50px 20px;
+  height: 100rem;
+  background-color: rgb(231, 229, 229);
+}
+.offer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.offer-text {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 0 50px;
+  box-sizing: border-box;
+  border-radius: 5px;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.offer img {
+  box-shadow: 5px 10px 20px grey;
+  object-fit: cover;
 }

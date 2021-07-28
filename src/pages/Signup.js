@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import Loader from "react-loader-spinner";
+import { useHistory, Link } from "react-router-dom";
 
-const Signup = () => {
+const Signup = (props) => {
+  const handleLogin = props;
+  const history = useHistory();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
 
   const handleUsernameChange = (event) => {
@@ -17,48 +21,61 @@ const Signup = () => {
     setEmail(value);
   };
 
+  const handlePhoneChange = (event) => {
+    const value = event.target.value;
+    setPhone(value);
+  };
+
   const handlePasswordChange = (event) => {
     const value = event.target.value;
     setPassword(value);
   };
 
-  const [data, setData] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
+  const handleSubmit = async (event) => {
+    if (!email) {
+      setEmailError("email is mandatory");
+    }
 
-  const fetchData = async () => {
-    const response = await axios.post(
-      "https://lereacteur-vinted-api.herokuapp.com/user/signup"
-    );
-
-    setData(response.data);
-    setIsLoading(false);
+    try {
+      event.preventDefault();
+      const response = await axios.post(
+        "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+        {
+          email: email,
+          password: password,
+          username: username,
+          phone: phone,
+        }
+      );
+      if (response.data.token) {
+        handleLogin(response.data.token);
+        history.push("/?onboarding=true");
+      } else {
+        alert("une erreur est survenue veuillez ressayer");
+      }
+    } catch (error) {
+      console.log(error);
+      if (error.response.status === 409) {
+        alert(error.response.data.message);
+      }
+    }
   };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   return (
     <div>
-      {isLoading ? (
-        <Loader
-          className="loader"
-          type="ThreeDots"
-          color="#49afb7"
-          height={80}
-          width={80}
-        />
-      ) : (
-        <div className="container-signup">
-          <div className="block-signup">
-            <div>S'inscrire</div>
-            <form onSubmit={(event) => event.preventDefault()}>
+      <div className="container-signup">
+        <div className="block-signup">
+          <div>S'inscrire</div>
+          <>
+            <form onSubmit={handleSubmit}>
               <input
+                className={emailError ? "field-error" : ""}
                 type="text"
                 value={username}
                 onChange={handleUsernameChange}
                 placeholder="Nom d'utilisateur"
               />
+              {emailError && <div>email is mandatory</div>}
               <input
                 type="email"
                 value={email}
@@ -66,33 +83,36 @@ const Signup = () => {
                 placeholder="Email"
               />
               <input
+                type="phone"
+                value={phone}
+                onChange={handlePhoneChange}
+                placeholder="+33612345678"
+              />
+              <input
                 type="password"
                 value={password}
                 onChange={handlePasswordChange}
                 placeholder="Mot de passe"
               />
+              <button type="submit">S'incrire</button>
             </form>
-            <div className="block-checkbox">
-              <div>
-                <input type="checkbox" />
-                <span>S'incrire à notre newsletter</span>
-              </div>
+          </>
+          <div className="block-checkbox">
+            <div>
+              <input type="checkbox" />
+              <span>S'incrire à notre newsletter</span>
+            </div>
 
-              <p>
-                En m'inscrivant je confirme avoir lu et accepté les Termes &
-                Conditions et Politique de Confidentialité de Vinted. Je
-                confirme avoir au moins 18 ans.
-              </p>
-            </div>
-            <div button-signup>
-              <button onClick={() => {}} type="submit">
-                S'incrire
-              </button>
-              <p>Tu as déjà un compte ? Connecte-toi!</p>
-            </div>
+            <p>
+              En m'inscrivant je confirme avoir lu et accepté les Termes &
+              Conditions et Politique de Confidentialité de Vinted. Je confirme
+              avoir au moins 18 ans.
+            </p>
           </div>
+
+          <Link to="/login">Tu as déjà un compte ? Connecte-toi!</Link>
         </div>
-      )}
+      </div>
     </div>
   );
 };

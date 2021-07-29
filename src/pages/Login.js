@@ -67,12 +67,14 @@ const Login = (props) => {
                 value={email}
                 onChange={handleEmailChange}
               />
+              <br />
               <input
                 type="password"
                 placeholder="Mot de passe"
                 value={password}
                 onChange={handlePasswordChange}
               />
+              <br />
               <button type="submit">Se connecter</button>
             </form>
           </div>

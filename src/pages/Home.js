@@ -1,27 +1,43 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Banner from "../assets/pictures/banner_wide-9b45d0aa9a311c4ff6013e9cf3bc2b6646468be3d2f553192c63598685fcc177.jpeg";
-
+import * as qs from "qs";
 import Loader from "react-loader-spinner";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Home = () => {
-  const [data, setData] = useState({});
+  const location = useLocation();
+  const params = qs.parse(location.search.substring(1)); // transforme "?page=1" en objet {page:1}
+  const page = params.page;
+
+  const [offers, setOffers] = useState();
+  const [count, setCount] = useState();
+
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchData = async () => {
-    const response = await axios.get(
-      "https://lereacteur-vinted-api.herokuapp.com/offers"
-    );
-
-    setData(response.data);
-    setIsLoading(false);
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get(
+        `https://lereacteur-vinted-api.herokuapp.com/offers?page=${page}&limit=8`
+      );
+      console.log(response);
+      setOffers(response.data.offers);
+      setCount(response.data.count);
+      setIsLoading(false);
+    };
+
     fetchData();
-  }, []);
+  }, [page]);
+
+  const paginationLinks = [];
+  const numberOfLinks = Math.ceil(count / 8);
+
+  for (let index = 0; index < numberOfLinks; index++) {
+    paginationLinks.push(
+      <Link to={`/?page=${index + 1}&limit=8`}>{index + 1}</Link>
+    );
+  }
 
   return (
     <div>
@@ -50,7 +66,8 @@ const Home = () => {
 
           <div>
             <div className="offers">
-              {data.offers.map((offer, index) => {
+              <div>pages : {paginationLinks}</div>
+              {offers.map((offer, index) => {
                 return (
                   <Link to={`/offer/${offer._id}`} key={offer._id}>
                     <div className="offer-card">

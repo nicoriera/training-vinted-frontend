@@ -1,6 +1,8 @@
 import React from "react";
 import Vintedlogo from "../assets/pictures/vinted-logo-771A7E0093-seeklogo.com.png";
+import Iconlopp from "../assets/pictures/icon_loop.png";
 import { Link } from "react-router-dom";
+import Slider from "../components/Slider";
 
 const Header = (props) => {
   const { token, handleLogout } = props;
@@ -12,7 +14,12 @@ const Header = (props) => {
           <Link to="/">
             <img className="header-picture" src={Vintedlogo} alt="vintedlogo" />
           </Link>
-          <input type="search" placeholder="Recherche des articles" />
+          <div className="input-search">
+            <input type="search" placeholder="Recherche des articles" />
+            <img className="icon-loop" src={Iconlopp} alt="iconloop" />
+          </div>
+
+          <Slider />
 
           <div className="header-button">
             <div className="button-connexion">

@@ -1,5 +1,5 @@
 .header {
-  height: 52px;
+  height: 120px;
   border-bottom: 1px solid lightgray;
 }
 
@@ -9,6 +9,29 @@
   align-items: center;
   margin: 10px 50px;
 }
+
+.input-search {
+  position: relative;
+  display: flex;
+}
+.input-search > input {
+  width: 500px;
+  height: 40px;
+  background-color: #f5f6f7;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  padding-left: 40px;
+}
+
+.icon-loop {
+  width: 20px;
+  position: absolute;
+  top: 12px;
+  left: 7px;
+  color: #bbb;
+}
+
 .header-picture {
   height: 30px;
 }

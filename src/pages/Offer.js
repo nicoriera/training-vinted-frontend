@@ -25,7 +25,6 @@ const Offer = () => {
 
   return (
     <div>
-      Offer {id}
       {isLoading ? (
         <Loader
           className="loader"

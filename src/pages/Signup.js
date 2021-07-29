@@ -76,39 +76,44 @@ const Signup = (props) => {
                 placeholder="Nom d'utilisateur"
               />
               {emailError && <div>email is mandatory</div>}
+              <br />
               <input
                 type="email"
                 value={email}
                 onChange={handleEmailChange}
                 placeholder="Email"
               />
+              <br />
               <input
                 type="phone"
                 value={phone}
                 onChange={handlePhoneChange}
                 placeholder="+33612345678"
               />
+              <br />
               <input
                 type="password"
                 value={password}
                 onChange={handlePasswordChange}
                 placeholder="Mot de passe"
               />
+              <br />
+              <div className="block-checkbox">
+                <div>
+                  <input type="checkbox" />
+                  <span>S'incrire à notre newsletter</span>
+                </div>
+
+                <p>
+                  En m'inscrivant je confirme avoir lu et accepté les Termes &
+                  Conditions et Politique de Confidentialité de Vinted. Je
+                  confirme avoir au moins 18 ans.
+                </p>
+              </div>
+              <br />
               <button type="submit">S'incrire</button>
             </form>
           </>
-          <div className="block-checkbox">
-            <div>
-              <input type="checkbox" />
-              <span>S'incrire à notre newsletter</span>
-            </div>
-
-            <p>
-              En m'inscrivant je confirme avoir lu et accepté les Termes &
-              Conditions et Politique de Confidentialité de Vinted. Je confirme
-              avoir au moins 18 ans.
-            </p>
-          </div>
 
           <Link to="/login">Tu as déjà un compte ? Connecte-toi!</Link>
         </div>

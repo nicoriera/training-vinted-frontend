@@ -68,16 +68,16 @@
 }
 
 .block {
-  height: 100%;
   display: flex;
-
   box-sizing: border-box;
   align-items: center;
   margin-bottom: 50px;
 }
 
 .block-background {
-  position: relative;
+  display: flex;
+  height: 500px;
+  width: 100%;
 }
 
 .block-accroche {
@@ -100,14 +100,21 @@
   padding: 10px;
   margin-bottom: 10px;
 }
+
 .images {
+  position: relative;
+  width: 100%;
   height: 100%;
-  width: 100%;
+
+  background-position: 50%;
+  background-size: cover;
 }
-.images img {
-  height: 420px;
-  width: 100%;
-  object-fit: cover;
+
+.images > img {
+  position: absolute;
+  height: 80px;
+  bottom: 0;
+  right: 0;
 }
 
 .offers {

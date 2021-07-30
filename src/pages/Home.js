@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Banner from "../assets/pictures/banner_wide-9b45d0aa9a311c4ff6013e9cf3bc2b6646468be3d2f553192c63598685fcc177.jpeg";
+import Forme from "../assets/pictures/tear.42d6cec6.svg";
 import * as qs from "qs";
 import Loader from "react-loader-spinner";
 
 import { Link, useLocation } from "react-router-dom";
 
 const Home = () => {
+  var sectionStyle = {
+    backgroundImage: `url(${Banner})`,
+  };
   const location = useLocation();
   const params = qs.parse(location.search.substring(1)); // transforme "?page=1" en objet {page:1}
   const page = params.page;
@@ -53,8 +57,8 @@ const Home = () => {
         <div className="site">
           <div className="block">
             <div className="block-background">
-              <div className="images">
-                <img src={Banner} alt="banner" />
+              <div className="images" style={sectionStyle} height>
+                <img clasName="image-forme" src={Forme} alt="forme" />
               </div>
             </div>
             <div className="block-accroche">

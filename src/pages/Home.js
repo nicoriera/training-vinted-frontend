@@ -13,7 +13,7 @@ const Home = () => {
   };
   const location = useLocation();
   const params = qs.parse(location.search.substring(1)); // transforme "?page=1" en objet {page:1}
-  const page = params.page;
+  const page = params.page || 1;
 
   const [offers, setOffers] = useState();
   const [count, setCount] = useState();

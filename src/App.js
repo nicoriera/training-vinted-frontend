@@ -17,9 +17,9 @@ export default function App() {
   const [token, setToken] = useState(Cookies.get("token") || "");
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState(false);
-  const [debouncedSearch] = useDebounce(search, 1000);
-  const [rangeValues, setRangeValues] = useState([0, 10000]);
-  const [finalRangeValues, setFinalRangeValues] = useState([0, 10000]);
+  const [debouncedSearch] = useDebounce(search, 500);
+  const [rangeValues, setRangeValues] = useState([0, 500]);
+  const [finalRangeValues, setFinalRangeValues] = useState([0, 500]);
 
   const handleLogin = (token) => {
     Cookies.set("token", token);

@@ -2,11 +2,21 @@ import React from "react";
 import Vintedlogo from "../assets/pictures/vinted-logo-771A7E0093-seeklogo.com.png";
 import Iconlopp from "../assets/pictures/icon_loop.png";
 import { Link } from "react-router-dom";
-import Slider from "../components/Slider";
-import Toggle from "../components/Toggle";
+import { Range } from "react-range";
+import Toggle from "react-toggle";
 
 const Header = (props) => {
-  const { token, handleLogout, search, handleSearch } = props;
+  const {
+    token,
+    handleLogout,
+    search,
+    handleSearch,
+    rangeValues,
+    handleRange,
+    handleFinalRange,
+    sort,
+    handleSort,
+  } = props;
 
   return (
     <nav>
@@ -27,9 +37,47 @@ const Header = (props) => {
             </div>
             <div className="filter-slider">
               <span>Trier par pix :</span>
-              <Toggle />
+              <Toggle
+                defaultChecked={sort}
+                icons={{
+                  checked: <div>🔼</div>,
+                  unchecked: <div>🔽</div>,
+                }}
+                onChange={handleSort}
+              />
               <span>Prix entre : </span>
-              <Slider />
+              <Range
+                step={5}
+                min={0}
+                max={500}
+                values={rangeValues}
+                onChange={(values) => handleRange(values)}
+                onFinalChange={(values) => handleFinalRange(values)}
+                renderTrack={({ props, children }) => (
+                  <div
+                    {...props}
+                    style={{
+                      ...props.style,
+                      height: "6px",
+                      width: "100%",
+                      backgroundColor: "#ccc",
+                    }}
+                  >
+                    {children}
+                  </div>
+                )}
+                renderThumb={({ props }) => (
+                  <div
+                    {...props}
+                    style={{
+                      ...props.style,
+                      height: "10px",
+                      width: "10px",
+                      backgroundColor: "#999",
+                    }}
+                  />
+                )}
+              />
             </div>
           </div>
 

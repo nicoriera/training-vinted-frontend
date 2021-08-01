@@ -7,10 +7,13 @@ import Loader from "react-loader-spinner";
 
 import { Link, useLocation } from "react-router-dom";
 
-const Home = () => {
+const Home = (props) => {
+  const { search, sort, rangeValues } = props;
+
   var sectionStyle = {
     backgroundImage: `url(${Banner})`,
   };
+
   const location = useLocation();
   const params = qs.parse(location.search.substring(1)); // transforme "?page=1" en objet {page:1}
   const page = params.page || 1;
@@ -22,8 +25,15 @@ const Home = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      const queryParams = qs.stringify({
+        page: page,
+        title: search,
+        priceMin: rangeValues[0],
+        priceMax: rangeValues[1],
+        sort: sort ? "price-asc" : "prise-desc",
+      });
       const response = await axios.get(
-        `https://lereacteur-vinted-api.herokuapp.com/offers?page=${page}&limit=8`
+        `https://lereacteur-vinted-api.herokuapp.com/offers?${queryParams}`
       );
       console.log(response);
       setOffers(response.data.offers);
@@ -32,7 +42,7 @@ const Home = () => {
     };
 
     fetchData();
-  }, [page]);
+  }, [page, search, rangeValues, sort]);
 
   const paginationLinks = [];
   const numberOfLinks = Math.ceil(count / 8);
@@ -57,20 +67,23 @@ const Home = () => {
         <div className="site">
           <div className="block">
             <div className="block-background">
-              <div className="images" style={sectionStyle} height>
-                <img clasName="image-forme" src={Forme} alt="forme" />
+              <div className="images" style={sectionStyle}>
+                <img className="image-forme" src={Forme} alt="forme" />
               </div>
             </div>
             <div className="block-accroche">
               <h2>Prêt à faire du tri dans vos placards ?</h2>
-              <button>Vends maintenent</button>
+              <Link to="/signup">
+                <button>Vends maintenent</button>
+              </Link>
+
               <div>Découvrir comment ça marche</div>
             </div>
           </div>
 
           <div>
+            <span>pages : {paginationLinks}</span>
             <div className="offers">
-              <div>pages : {paginationLinks}</div>
               {offers.map((offer, index) => {
                 return (
                   <Link to={`/offer/${offer._id}`} key={offer._id}>
@@ -87,6 +100,7 @@ const Home = () => {
                 );
               })}
             </div>
+            <span>pages : {paginationLinks}</span>
           </div>
         </div>
       )}

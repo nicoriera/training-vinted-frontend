@@ -10,9 +10,14 @@
   margin: 10px 50px;
 }
 
+.filters {
+  display: flex;
+  flex-direction: column;
+}
 .input-search {
   position: relative;
   display: flex;
+  margin-bottom: 30px;
 }
 .input-search > input {
   width: 500px;
@@ -29,7 +34,17 @@
   position: absolute;
   top: 12px;
   left: 7px;
-  color: #bbb;
+}
+
+.filter-slider {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.filter-slider > span {
+  font-size: 10px;
+  margin-right: 10px;
 }
 
 .header-picture {
@@ -225,4 +240,11 @@
   display: flex;
 
   flex-direction: column;
+}
+
+.publish-form {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

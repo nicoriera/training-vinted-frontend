@@ -2,10 +2,10 @@ import React from "react";
 import { useState } from "react";
 import { Range, getTrackBackground } from "react-range";
 
-const Slider = () => {
-  const step = 0.1;
+const Slider = (props) => {
+  const step = 5;
   const min = 0;
-  const max = 100;
+  const max = 500;
 
   const [values, setValues] = useState([20, 60]);
 
@@ -24,7 +24,8 @@ const Slider = () => {
             ...props.style,
             height: "36px",
             display: "flex",
-            width: "100%",
+            width: "80%",
+            cursor: "inherit",
           }}
         >
           <div
@@ -46,7 +47,7 @@ const Slider = () => {
           </div>
         </div>
       )}
-      renderThumb={({ props }) => (
+      renderThumb={({ index, props, isDragged }) => (
         <div
           {...props}
           style={{
@@ -55,8 +56,28 @@ const Slider = () => {
             width: "15px",
             borderRadius: "50%",
             backgroundColor: "#49afb7",
+            border: "1px solid #FFF",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
-        />
+        >
+          <div
+            style={{
+              position: "absolute",
+              top: "-24px",
+              color: "#fff",
+              fontWeight: "bold",
+              fontSize: "10px",
+              fontFamily: "Arial,Helvetica Neue,Helvetica,sans-serif",
+              padding: "4px",
+              borderRadius: "4px",
+              backgroundColor: "#49afb7",
+            }}
+          >
+            {values[index].toFixed(1)}
+          </div>
+        </div>
       )}
     />
   );

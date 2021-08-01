@@ -17,6 +17,7 @@ export default function App() {
   const [token, setToken] = useState(Cookies.get("token") || "");
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState(false);
+  const [debouncedSearch] = useDebounce(search, 1000);
   const [rangeValues, setRangeValues] = useState([0, 10000]);
   const [finalRangeValues, setFinalRangeValues] = useState([0, 10000]);
 
@@ -60,7 +61,11 @@ export default function App() {
       />
       <Switch>
         <Route exact path="/">
-          <Home search={search} rangeValues={finalRangeValues} sort={sort} />
+          <Home
+            search={debouncedSearch}
+            rangeValues={finalRangeValues}
+            sort={sort}
+          />
         </Route>
         <Route path="/offer/:id">
           <Offer />

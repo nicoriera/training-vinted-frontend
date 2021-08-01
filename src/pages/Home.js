@@ -8,21 +8,22 @@ import Loader from "react-loader-spinner";
 import { Link, useLocation } from "react-router-dom";
 
 const Home = (props) => {
-  const { search, sort, rangeValues } = props;
-
   var sectionStyle = {
     backgroundImage: `url(${Banner})`,
   };
 
+  const { search, sort, rangeValues } = props;
   const location = useLocation();
-  const params = qs.parse(location.search.substring(1)); // transforme "?page=1" en objet {page:1}
-  const page = params.page || 1;
+  qs.parse(location.search.substring(1)); // transforme "?page=1" en objet {page:1}
 
   const [offers, setOffers] = useState();
   const [count, setCount] = useState();
-
   const [isLoading, setIsLoading] = useState(true);
+  const [page, setPage] = useState(1);
 
+  const handleChangePage = (page) => {
+    setPage(page);
+  };
   useEffect(() => {
     const fetchData = async () => {
       const queryParams = qs.stringify({
@@ -49,7 +50,7 @@ const Home = (props) => {
 
   for (let index = 0; index < numberOfLinks; index++) {
     paginationLinks.push(
-      <Link to={`/?page=${index + 1}&limit=8`}>{index + 1}</Link>
+      <div onClick={() => handleChangePage(index + 1)}>{index + 1}</div>
     );
   }
 
@@ -82,7 +83,7 @@ const Home = (props) => {
           </div>
 
           <div>
-            <span>pages : {paginationLinks}</span>
+            <div>pages : {paginationLinks}</div>
             <div className="offers">
               {offers.map((offer, index) => {
                 return (
@@ -92,7 +93,7 @@ const Home = (props) => {
 
                       <img
                         src={offer.product_image.secure_url}
-                        alt="product_image.secure_url"
+                        alt={offer.product_image}
                       />
                       <div>{offer.product_name}</div>
                     </div>
@@ -100,7 +101,7 @@ const Home = (props) => {
                 );
               })}
             </div>
-            <span>pages : {paginationLinks}</span>
+            <div>pages : {paginationLinks}</div>
           </div>
         </div>
       )}

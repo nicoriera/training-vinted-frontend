@@ -1,28 +1,23 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-
 import { Link } from "react-router-dom";
-
 import Loader from "react-loader-spinner";
 
 const Login = (props) => {
-  const handleLogin = props;
-
+  const { handleLogin } = props;
   const history = useHistory();
-
   const [isLoading, setIsLoading] = useState(true);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleEmailChange = (event) => {
+  const handleChangeEmail = (event) => {
     const value = event.target.value;
     setEmail(value);
     console.log(event.target.value);
   };
 
-  const handlePasswordChange = (event) => {
+  const handleChangePassword = (event) => {
     const value = event.target.value;
     setPassword(value);
     console.log(event.target.value);
@@ -65,14 +60,14 @@ const Login = (props) => {
                 type="email"
                 placeholder="Adresse email"
                 value={email}
-                onChange={handleEmailChange}
+                onChange={handleChangeEmail}
               />
               <br />
               <input
                 type="password"
                 placeholder="Mot de passe"
                 value={password}
-                onChange={handlePasswordChange}
+                onChange={handleChangePassword}
               />
               <br />
               <button type="submit">Se connecter</button>

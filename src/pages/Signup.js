@@ -3,7 +3,7 @@ import axios from "axios";
 import { useHistory, Link } from "react-router-dom";
 
 const Signup = (props) => {
-  const handleLogin = props;
+  const { handleLogin } = props;
   const history = useHistory();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -11,22 +11,22 @@ const Signup = (props) => {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleUsernameChange = (event) => {
+  const handleChangeUsername = (event) => {
     const value = event.target.value;
     setUsername(value);
   };
 
-  const handleEmailChange = (event) => {
+  const handleChangeEmail = (event) => {
     const value = event.target.value;
     setEmail(value);
   };
 
-  const handlePhoneChange = (event) => {
+  const handleChangePhone = (event) => {
     const value = event.target.value;
     setPhone(value);
   };
 
-  const handlePasswordChange = (event) => {
+  const handleChangePassword = (event) => {
     const value = event.target.value;
     setPassword(value);
   };
@@ -72,7 +72,7 @@ const Signup = (props) => {
                 className={emailError ? "field-error" : ""}
                 type="text"
                 value={username}
-                onChange={handleUsernameChange}
+                onChange={handleChangeUsername}
                 placeholder="Nom d'utilisateur"
               />
               {emailError && <div>email is mandatory</div>}
@@ -80,21 +80,21 @@ const Signup = (props) => {
               <input
                 type="email"
                 value={email}
-                onChange={handleEmailChange}
+                onChange={handleChangeEmail}
                 placeholder="Email"
               />
               <br />
               <input
                 type="phone"
                 value={phone}
-                onChange={handlePhoneChange}
+                onChange={handleChangePhone}
                 placeholder="+33612345678"
               />
               <br />
               <input
                 type="password"
                 value={password}
-                onChange={handlePasswordChange}
+                onChange={handleChangePassword}
                 placeholder="Mot de passe"
               />
               <br />

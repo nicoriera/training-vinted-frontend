@@ -37,10 +37,16 @@ const Header = (props) => {
             <div className="button-connexion">
               {token ? (
                 <div>
+                  <Link to="/publish">
+                    <button className="button-sale">Vends tes articles</button>
+                  </Link>
                   <button onClick={handleLogout}>Logout</button>
                 </div>
               ) : (
                 <div>
+                  <Link to="/publish">
+                    <button className="button-sale">Vends tes articles</button>
+                  </Link>
                   <Link to="/signup">
                     <button>S'incrire</button>
                   </Link>
@@ -50,9 +56,6 @@ const Header = (props) => {
                 </div>
               )}
             </div>
-            <Link to="/publish">
-              <button className="button-sale">Vends tes articles</button>
-            </Link>
           </div>
         </div>
       </div>

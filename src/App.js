@@ -52,12 +52,13 @@ export default function App() {
       <Header
         token={token}
         handleLogout={handleLogout}
-        handleSetSearch={handleSearch}
+        handleSearch={handleSearch}
         handleSort={handleSort}
         sort={sort}
         handleRange={handleRange}
         handleFinalRange={handleFinalRange}
         rangeValues={rangeValues}
+        search={search}
       />
       <Switch>
         <Route exact path="/">

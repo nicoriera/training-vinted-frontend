@@ -24,6 +24,7 @@ const Home = (props) => {
   const handleChangePage = (page) => {
     setPage(page);
   };
+
   useEffect(() => {
     const fetchData = async () => {
       const queryParams = qs.stringify({
@@ -33,12 +34,12 @@ const Home = (props) => {
         priceMax: rangeValues[1],
         sort: sort ? "price-asc" : "prise-desc",
       });
-      const response = await axios.get(
+      const results = await axios.get(
         `https://lereacteur-vinted-api.herokuapp.com/offers?${queryParams}`
       );
-      console.log(response);
-      setOffers(response.data.offers);
-      setCount(response.data.count);
+      console.log(results);
+      setOffers(results.data.offers);
+      setCount(results.data.count);
       setIsLoading(false);
     };
 

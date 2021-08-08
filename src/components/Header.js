@@ -1,9 +1,15 @@
 import React from "react";
 import Vintedlogo from "../assets/pictures/vinted-logo-771A7E0093-seeklogo.com.png";
-import Iconlopp from "../assets/pictures/icon_loop.png";
-import { Link } from "react-router-dom";
-import { Range } from "react-range";
+import { Link, useLocation } from "react-router-dom";
+import { Range, getTrackBackground } from "react-range";
 import Toggle from "react-toggle";
+import "react-toggle/style.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSortNumericDown,
+  faSortNumericDownAlt,
+  faSearch,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Header = (props) => {
   const {
@@ -17,6 +23,8 @@ const Header = (props) => {
     sort,
     handleSort,
   } = props;
+
+  const location = useLocation();
 
   return (
     <nav>
@@ -33,52 +41,105 @@ const Header = (props) => {
                 value={search}
                 onChange={handleSearch}
               />
-              <img className="icon-loop" src={Iconlopp} alt="iconloop" />
+              <FontAwesomeIcon icon={faSearch} className="icon-loop" />
             </div>
-            <div className="filter-slider">
-              <span>Trier par pix :</span>
-              <Toggle
-                defaultChecked={sort}
-                icons={{
-                  checked: <div>🔼</div>,
-                  unchecked: <div>🔽</div>,
-                }}
-                onChange={handleSort}
-              />
-              <span>Prix entre : </span>
-              <Range
-                step={5}
-                min={0}
-                max={500}
-                values={rangeValues}
-                onChange={(values) => handleRange(values)}
-                onFinalChange={(values) => handleFinalRange(values)}
-                renderTrack={({ props, children }) => (
-                  <div
-                    {...props}
-                    style={{
-                      ...props.style,
-                      height: "6px",
-                      width: "100%",
-                      backgroundColor: "#ccc",
-                    }}
-                  >
-                    {children}
-                  </div>
-                )}
-                renderThumb={({ props }) => (
-                  <div
-                    {...props}
-                    style={{
-                      ...props.style,
-                      height: "10px",
-                      width: "10px",
-                      backgroundColor: "#999",
-                    }}
-                  />
-                )}
-              />
-            </div>
+
+            {location.pathname === "/" ? (
+              <div className="filter-slider">
+                <span>Trier par pix :</span>
+
+                <Toggle
+                  className="toggle"
+                  defaultChecked={sort}
+                  icons={{
+                    checked: (
+                      <FontAwesomeIcon icon={faSortNumericDown} color="white" />
+                    ),
+                    unchecked: (
+                      <FontAwesomeIcon
+                        icon={faSortNumericDownAlt}
+                        color="white"
+                      />
+                    ),
+                  }}
+                  onChange={handleSort}
+                />
+                <span>Prix entre : </span>
+
+                <Range
+                  values={rangeValues}
+                  step={5}
+                  min={0}
+                  max={500}
+                  onChange={(values) => handleRange(values)}
+                  onFinalChange={(values) => handleFinalRange(values)}
+                  renderTrack={({ props, children }) => (
+                    <div
+                      onMouseDown={props.onMouseDown}
+                      onTouchStart={props.onTouchStart}
+                      style={{
+                        ...props.style,
+                        height: "36px",
+                        display: "flex",
+                        width: "50%",
+                      }}
+                    >
+                      <div
+                        ref={props.ref}
+                        style={{
+                          height: "5px",
+                          width: "100%",
+                          borderRadius: "4px",
+                          background: getTrackBackground({
+                            values: rangeValues,
+                            colors: ["#ccc", "#09b0ba", "#ccc"],
+                            min: 0,
+                            max: 500,
+                          }),
+                          alignSelf: "center",
+                        }}
+                      >
+                        {children}
+                      </div>
+                    </div>
+                  )}
+                  renderThumb={({ index, props, isDragged }) => (
+                    <div
+                      {...props}
+                      style={{
+                        ...props.style,
+                        height: "15px",
+                        width: "15px",
+                        borderRadius: "50%",
+                        outline: "none",
+                        backgroundColor: "#FFF",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        boxShadow: "0px 2px 6px #AAA",
+                      }}
+                    >
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: "-28px",
+                          color: "#fff",
+                          fontWeight: "bold",
+                          fontSize: "14px",
+                          fontFamily:
+                            "Arial,Helvetica Neue,Helvetica,sans-serif",
+                          padding: "4px",
+                          borderRadius: "4px",
+                          backgroundColor: "#09b0ba",
+                        }}
+                      >
+                        {rangeValues[index] + "€"}
+                      </div>
+                    </div>
+                  )}
+                />
+              </div>
+            ) : null}
           </div>
 
           <div className="header-button">

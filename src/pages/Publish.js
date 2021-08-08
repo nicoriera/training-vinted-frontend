@@ -70,157 +70,164 @@ const Publish = (props) => {
   };
 
   return token ? (
-    <div className="publish-form">
-      <span>Vends ton article</span>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={onSubmit}
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          setFieldValue,
-          handleSubmit,
-          isSubmitting,
-          /* and other goodies */
-        }) => (
-          <form onSubmit={handleSubmit}>
-            <input
-              type="file"
-              name="picture"
-              onChange={(event) => {
-                setFieldValue("picture", event.currentTarget.files[0]);
-              }}
-            />
-            <br />
-            {errors.picture && touched.picture && errors.picture}
-            <br />
-            <div className="article-descritption">
-              <div>
-                <span>Titre</span>
-                <input
-                  type="text"
-                  name="title"
-                  onChange={handleChange}
-                  value={values.title}
-                  placeholder="ex: T-Shirt Carharrt WIP noir"
-                />
-                {errors.tilte && touched.tilte && errors.title}
-              </div>
-              <div>
-                <span>Décris ton article</span>
-                <input
-                  type="text"
-                  name="description"
-                  onChange={handleChange}
-                  value={values.description}
-                  placeholder="ex: porté quelquefois"
-                />
-                <br />
-                {errors.description &&
-                  touched.description &&
-                  errors.description}
-                <br />
-              </div>
-            </div>
-
-            <div className="articles-details">
-              <div>
-                <span>Marque</span>
-                <input
-                  type="text"
-                  name="brand"
-                  onChange={handleChange}
-                  value={values.brand}
-                  placeholder="ex: Carharrt WIP"
-                />
-                {errors.brand && touched.brand && errors.brand}
+    <div className="container-publish">
+      <div className="publish-form">
+        <h2>Vends ton article</h2>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={onSubmit}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            setFieldValue,
+            handleSubmit,
+            isSubmitting,
+            /* and other goodies */
+          }) => (
+            <form onSubmit={handleSubmit}>
+              <div className="publish-file-select">
+                <div className="publish-preview">
+                  <input
+                    className="publish-file"
+                    type="file"
+                    accept=".png, .jpeg, .jpg, .gif"
+                    name="picture"
+                    onChange={(event) => {
+                      setFieldValue("picture", event.currentTarget.files[0]);
+                    }}
+                  />
+                </div>
               </div>
 
-              <div>
-                <span>Taille</span>
-                <input
-                  type="number"
-                  name="size"
-                  onChange={handleChange}
-                  value={values.size}
-                  placeholder="ex: 40 / 12"
-                />
-                {errors.size && touched.size && errors.size}
-              </div>
-              <div>
-                <span>Couleur</span>
-                <input
-                  type="text"
-                  name="color"
-                  onChange={handleChange}
-                  value={values.color}
-                  placeholder="ex: Noir"
-                />
+              {errors.picture && touched.picture && errors.picture}
 
-                {errors.color && touched.color && errors.color}
-              </div>
-
-              <div>
-                <span>État</span>
-                <input
-                  type="text"
-                  name="condition"
-                  onChange={handleChange}
-                  value={values.condition}
-                  placeholder="ex: Très bon état"
-                />
-                {errors.condition && touched.condition && errors.condition}
+              <div className="article-descritption">
+                <div className="article-title">
+                  <span>Titre</span>
+                  <input
+                    type="text"
+                    name="title"
+                    onChange={handleChange}
+                    value={values.title}
+                    placeholder="ex: T-Shirt Carharrt WIP noir"
+                  />
+                  {errors.tilte && touched.tilte && errors.title}
+                </div>
+                <div>
+                  <span>Décris ton article</span>
+                  <input
+                    type="text"
+                    name="description"
+                    onChange={handleChange}
+                    value={values.description}
+                    placeholder="ex: porté quelquefois"
+                  />
+                  {errors.description &&
+                    touched.description &&
+                    errors.description}
+                </div>
               </div>
 
-              <div>
-                <span>Lieu</span>
-                <input
-                  type="text"
-                  name="city"
-                  onChange={handleChange}
-                  value={values.city}
-                  placeholder="ex: Le Croisic"
-                />
-                <br />
-                {errors.city && touched.city && errors.city}
-                <br />
-              </div>
-            </div>
+              <div className="article-details">
+                <div>
+                  <span>Marque</span>
+                  <input
+                    type="text"
+                    name="brand"
+                    onChange={handleChange}
+                    value={values.brand}
+                    placeholder="ex: Carharrt WIP"
+                  />
+                  {errors.brand && touched.brand && errors.brand}
+                </div>
 
-            <div className="article-price">
-              <div>
-                <span>Prix</span>
-                <input
-                  type="number"
-                  name="price"
-                  onChange={handleChange}
-                  value={values.price}
-                  placeholder="0,00€"
-                />
+                <div>
+                  <span>Taille</span>
+                  <input
+                    type="number"
+                    name="size"
+                    onChange={handleChange}
+                    value={values.size}
+                    placeholder="ex: 40 / 12"
+                  />
+                  {errors.size && touched.size && errors.size}
+                </div>
+                <div>
+                  <span>Couleur</span>
+                  <input
+                    type="text"
+                    name="color"
+                    onChange={handleChange}
+                    value={values.color}
+                    placeholder="ex: Noir"
+                  />
+
+                  {errors.color && touched.color && errors.color}
+                </div>
+
+                <div>
+                  <span>État</span>
+                  <input
+                    type="text"
+                    name="condition"
+                    onChange={handleChange}
+                    value={values.condition}
+                    placeholder="ex: Très bon état"
+                  />
+                  {errors.condition && touched.condition && errors.condition}
+                </div>
+
+                <div>
+                  <span>Lieu</span>
+                  <input
+                    type="text"
+                    name="city"
+                    onChange={handleChange}
+                    value={values.city}
+                    placeholder="ex: Le Croisic"
+                  />
+
+                  {errors.city && touched.city && errors.city}
+                </div>
+              </div>
+
+              <div className="article-price">
+                <div>
+                  <span>Prix</span>
+                  <input
+                    type="number"
+                    name="price"
+                    onChange={handleChange}
+                    value={values.price}
+                    placeholder="0,00€"
+                  />
+                  {errors.price && touched.price && errors.price}
+                </div>
+
+                <div>
+                  <input type="checkbox" />
+                  <span>Je suis intéressé(e) par les échanges</span>
+                </div>
+
                 {errors.price && touched.price && errors.price}
               </div>
-
-              <div>
-                <input type="checkbox" />
-                <span>Je suis intéressé(e) par les échanges</span>
+              <div className="article-button">
+                <button
+                  className="add-btn"
+                  type="submit"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? <Loader /> : "Ajouter"}
+                </button>
               </div>
-
-              <br />
-              {errors.price && touched.price && errors.price}
-              <br />
-            </div>
-            <div className="article-button">
-              <button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? <Loader /> : "Ajouter"}
-              </button>
-            </div>
-          </form>
-        )}
-      </Formik>
+            </form>
+          )}
+        </Formik>
+      </div>
     </div>
   ) : (
     <Redirect to="/login" />

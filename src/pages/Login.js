@@ -54,8 +54,8 @@ const Login = (props) => {
       {isLoading ? (
         <div className="container-login">
           <div className="block-login">
-            <div>Se connecter</div>
-            <form onSubmit={handleSubmit}>
+            <h3>Se connecter</h3>
+            <form className="login-form" onSubmit={handleSubmit}>
               <input
                 type="email"
                 placeholder="Adresse email"
@@ -70,11 +70,15 @@ const Login = (props) => {
                 onChange={handleChangePassword}
               />
               <br />
-              <button type="submit">Se connecter</button>
+              <button className="button-login" type="submit">
+                Se connecter
+              </button>
             </form>
           </div>
 
-          <Link to="/signup">Pas encore de compte ? Inscris-toi!</Link>
+          <Link className="link-signup" to="/signup">
+            Pas encore de compte ? Inscris-toi!
+          </Link>
         </div>
       ) : (
         <Loader

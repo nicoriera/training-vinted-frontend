@@ -3,15 +3,16 @@ import "react-toggle/style.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useState } from "react";
 import { useDebounce } from "use-debounce/lib";
+import Cookies from "js-cookie";
 
 import Home from "./pages/Home";
 import Offer from "./pages/Offer";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-import Header from "./components/Header";
-
 import Publish from "./pages/Publish";
-import Cookies from "js-cookie";
+import Payement from "./pages/Payement";
+
+import Header from "./components/Header";
 
 export default function App() {
   const [token, setToken] = useState(Cookies.get("token") || "");
@@ -48,39 +49,45 @@ export default function App() {
   };
 
   return (
-    <Router>
-      <Header
-        token={token}
-        handleLogout={handleLogout}
-        handleSearch={handleSearch}
-        handleSort={handleSort}
-        sort={sort}
-        handleRange={handleRange}
-        handleFinalRange={handleFinalRange}
-        rangeValues={rangeValues}
-        search={search}
-      />
-      <Switch>
-        <Route exact path="/">
-          <Home
-            search={debouncedSearch}
-            rangeValues={finalRangeValues}
-            sort={sort}
-          />
-        </Route>
-        <Route path="/offer/:id">
-          <Offer />
-        </Route>
-        <Route path="/signup">
-          <Signup handleLogin={handleLogin} />
-        </Route>
-        <Route path="/login">
-          <Login handleLogin={handleLogin} />
-        </Route>
-        <Route path="/publish">
-          <Publish token={token} />
-        </Route>
-      </Switch>
-    </Router>
+    <div>
+      <title>Vinted</title>
+      <Router>
+        <Header
+          token={token}
+          handleLogout={handleLogout}
+          handleSearch={handleSearch}
+          handleSort={handleSort}
+          sort={sort}
+          handleRange={handleRange}
+          handleFinalRange={handleFinalRange}
+          rangeValues={rangeValues}
+          search={search}
+        />
+        <Switch>
+          <Route exact path="/">
+            <Home
+              search={debouncedSearch}
+              rangeValues={finalRangeValues}
+              sort={sort}
+            />
+          </Route>
+          <Route path="/offer/:id">
+            <Offer />
+          </Route>
+          <Route path="/signup">
+            <Signup handleLogin={handleLogin} />
+          </Route>
+          <Route path="/login">
+            <Login handleLogin={handleLogin} />
+          </Route>
+          <Route path="/publish">
+            <Publish token={token} />
+          </Route>
+          <Route path="/payement">
+            <Payement token={token} />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 }

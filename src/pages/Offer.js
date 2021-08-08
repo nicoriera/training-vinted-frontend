@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import Loader from "react-loader-spinner";
 
@@ -63,7 +63,9 @@ const Offer = () => {
               <div>{data.product_description}</div>
               <div>{data.owner.account.username}</div>
 
-              <button>Acheter</button>
+              <Link to="/payement">
+                <button>Acheter</button>
+              </Link>
             </div>
           </div>
         </div>

@@ -83,8 +83,8 @@ const Home = (props) => {
             </div>
           </div>
 
-          <div>
-            <div>pages : {paginationLinks}</div>
+          <div className="container-offers">
+            <div className="offers-pages">pages : {paginationLinks}</div>
             <div className="offers">
               {offers.map((offer, index) => {
                 return (
@@ -102,7 +102,7 @@ const Home = (props) => {
                 );
               })}
             </div>
-            <div>pages : {paginationLinks}</div>
+            <div className="offers-pages">pages : {paginationLinks}</div>
           </div>
         </div>
       )}

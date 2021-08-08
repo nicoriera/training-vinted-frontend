@@ -14,18 +14,18 @@ const Publish = (props) => {
     title: "",
     description: "",
     brand: "",
-    size: 0,
+    size: "",
     color: "",
     condition: "",
     city: "",
-    price: 0,
+    price: "",
   };
 
   const validationSchema = Yup.object().shape({
     title: Yup.string().required("Required"),
     description: Yup.string().required("Required"),
     brand: Yup.string(),
-    size: Yup.number(),
+    size: Yup.string(),
     color: Yup.string(),
     condition: Yup.string(),
     city: Yup.string(),
@@ -147,11 +147,11 @@ const Publish = (props) => {
                   <div className="article-title-descritption">
                     <span>Taille</span>
                     <input
-                      type="number"
+                      type="text"
                       name="size"
                       onChange={handleChange}
                       value={values.size}
-                      placeholder="ex: 40 / 12"
+                      placeholder="ex: L / 40 / 12"
                     />
                     {errors.size && touched.size && errors.size}
                   </div>
@@ -206,7 +206,7 @@ const Publish = (props) => {
                     {errors.price && touched.price && errors.price}
                   </div>
 
-                  <div>
+                  <div className="checkbox">
                     <input type="checkbox" />
                     <span>Je suis intéressé(e) par les échanges</span>
                   </div>

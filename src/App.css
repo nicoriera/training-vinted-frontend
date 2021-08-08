@@ -372,23 +372,36 @@
   background-color: #fff;
   padding: 30px;
   margin: 30px 0;
-  box-shadow: 0 0 2px grey;
-  border-radius: 3px;
+  box-shadow: 5px 5px 10px -8px grey;
+  border-radius: 10px;
   height: 200px;
 }
 
+.article {
+  display: flex;
+  flex-direction: column;
+}
 .article-descritption,
 .article-details,
 .article-price {
   background-color: #fff;
   margin: 20px 0;
-  box-shadow: 0 0 2px grey;
-  border-radius: 3px;
+  box-shadow: 5px 5px 10px -8px grey;
+  border-radius: 10px;
   height: auto;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  padding: 10px;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.article-title-descritption {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ebedee;
 }
 
 .publish-form input {
@@ -397,7 +410,7 @@
   margin: 0 3px 5px 0;
   border: none;
   font-size: 15px;
-  width: auto;
+  width: 400px;
   text-overflow: ellipsis;
 }
 
@@ -428,4 +441,20 @@ input[type="file"]::before {
   color: #0ab1ba;
   font-weight: bold;
   cursor: pointer;
+}
+
+textarea[type="textarea"] {
+  width: 41.8%;
+  height: 100px;
+  resize: none;
+  border: none;
+  border-bottom: 0.1rem solid #ebedee;
+  outline: none;
+  font-size: 15px;
+  font-family: inherit;
+  color: #000;
+}
+
+input[type="number"] {
+  background-color: khaki;
 }

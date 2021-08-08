@@ -104,117 +104,117 @@ const Publish = (props) => {
               </div>
 
               {errors.picture && touched.picture && errors.picture}
-
-              <div className="article-descritption">
-                <div className="article-title">
-                  <span>Titre</span>
-                  <input
-                    type="text"
-                    name="title"
-                    onChange={handleChange}
-                    value={values.title}
-                    placeholder="ex: T-Shirt Carharrt WIP noir"
-                  />
-                  {errors.tilte && touched.tilte && errors.title}
+              <div className="article">
+                <div className="article-descritption">
+                  <div className="article-title-descritption">
+                    <span>Titre</span>
+                    <input
+                      type="text"
+                      name="title"
+                      onChange={handleChange}
+                      value={values.title}
+                      placeholder="ex: T-Shirt Carharrt WIP noir"
+                    />
+                    {errors.tilte && touched.tilte && errors.title}
+                  </div>
+                  <div className="article-title-descritption">
+                    <span>Décris ton article</span>
+                    <textarea
+                      type="textarea"
+                      name="description"
+                      onChange={handleChange}
+                      value={values.description}
+                      placeholder="ex: porté quelquefois"
+                    />
+                    {errors.description &&
+                      touched.description &&
+                      errors.description}
+                  </div>
                 </div>
-                <div>
-                  <span>Décris ton article</span>
-                  <input
-                    type="text"
-                    name="description"
-                    onChange={handleChange}
-                    value={values.description}
-                    placeholder="ex: porté quelquefois"
-                  />
-                  {errors.description &&
-                    touched.description &&
-                    errors.description}
+                <div className="article-details">
+                  <div className="article-title-descritption">
+                    <span>Marque</span>
+                    <input
+                      type="text"
+                      name="brand"
+                      onChange={handleChange}
+                      value={values.brand}
+                      placeholder="ex: Carharrt WIP"
+                    />
+                    {errors.brand && touched.brand && errors.brand}
+                  </div>
+
+                  <div className="article-title-descritption">
+                    <span>Taille</span>
+                    <input
+                      type="number"
+                      name="size"
+                      onChange={handleChange}
+                      value={values.size}
+                      placeholder="ex: 40 / 12"
+                    />
+                    {errors.size && touched.size && errors.size}
+                  </div>
+                  <div className="article-title-descritption">
+                    <span>Couleur</span>
+                    <input
+                      type="text"
+                      name="color"
+                      onChange={handleChange}
+                      value={values.color}
+                      placeholder="ex: Noir"
+                    />
+
+                    {errors.color && touched.color && errors.color}
+                  </div>
+
+                  <div className="article-title-descritption">
+                    <span>État</span>
+                    <input
+                      type="text"
+                      name="condition"
+                      onChange={handleChange}
+                      value={values.condition}
+                      placeholder="ex: Très bon état"
+                    />
+                    {errors.condition && touched.condition && errors.condition}
+                  </div>
+
+                  <div className="article-title-descritption">
+                    <span>Lieu</span>
+                    <input
+                      type="text"
+                      name="city"
+                      onChange={handleChange}
+                      value={values.city}
+                      placeholder="ex: Le Croisic"
+                    />
+
+                    {errors.city && touched.city && errors.city}
+                  </div>
                 </div>
-              </div>
+                <div className="article-price">
+                  <div className="article-title-descritption">
+                    <span>Prix</span>
+                    <input
+                      type="number"
+                      name="price"
+                      onChange={handleChange}
+                      value={values.price}
+                      placeholder="0,00€"
+                    />
+                    {errors.price && touched.price && errors.price}
+                  </div>
 
-              <div className="article-details">
-                <div>
-                  <span>Marque</span>
-                  <input
-                    type="text"
-                    name="brand"
-                    onChange={handleChange}
-                    value={values.brand}
-                    placeholder="ex: Carharrt WIP"
-                  />
-                  {errors.brand && touched.brand && errors.brand}
-                </div>
+                  <div>
+                    <input type="checkbox" />
+                    <span>Je suis intéressé(e) par les échanges</span>
+                  </div>
 
-                <div>
-                  <span>Taille</span>
-                  <input
-                    type="number"
-                    name="size"
-                    onChange={handleChange}
-                    value={values.size}
-                    placeholder="ex: 40 / 12"
-                  />
-                  {errors.size && touched.size && errors.size}
-                </div>
-                <div>
-                  <span>Couleur</span>
-                  <input
-                    type="text"
-                    name="color"
-                    onChange={handleChange}
-                    value={values.color}
-                    placeholder="ex: Noir"
-                  />
-
-                  {errors.color && touched.color && errors.color}
-                </div>
-
-                <div>
-                  <span>État</span>
-                  <input
-                    type="text"
-                    name="condition"
-                    onChange={handleChange}
-                    value={values.condition}
-                    placeholder="ex: Très bon état"
-                  />
-                  {errors.condition && touched.condition && errors.condition}
-                </div>
-
-                <div>
-                  <span>Lieu</span>
-                  <input
-                    type="text"
-                    name="city"
-                    onChange={handleChange}
-                    value={values.city}
-                    placeholder="ex: Le Croisic"
-                  />
-
-                  {errors.city && touched.city && errors.city}
-                </div>
-              </div>
-
-              <div className="article-price">
-                <div>
-                  <span>Prix</span>
-                  <input
-                    type="number"
-                    name="price"
-                    onChange={handleChange}
-                    value={values.price}
-                    placeholder="0,00€"
-                  />
                   {errors.price && touched.price && errors.price}
                 </div>
-
-                <div>
-                  <input type="checkbox" />
-                  <span>Je suis intéressé(e) par les échanges</span>
-                </div>
-
-                {errors.price && touched.price && errors.price}
               </div>
+
               <div className="article-button">
                 <button
                   className="add-btn"

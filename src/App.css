@@ -42,11 +42,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-aro;
 }
 
 .filter-slider > span {
   font-size: 10px;
-  margin-right: 10px;
+  margin: 0 10px;
 }
 
 .header-picture {
@@ -72,11 +73,12 @@
   border: 1px solid #49afb7;
   color: #49afb7;
   border-radius: 5px;
-  padding: 5px;
+  padding: 6px;
   margin-left: 10px;
+  cursor: pointer;
 }
 
-.button-sale {
+.button-connexion button:hover {
   background-color: #49afb7;
   border: 1px solid#49AFB7;
   border-radius: 5px;
@@ -100,24 +102,37 @@
 }
 
 .block-accroche {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: absolute;
-  height: 200px;
-  width: 300px;
+  height: auto;
+  width: 400px;
   background-color: white;
   border-radius: 5px;
   margin: 30px;
-  padding: 20px;
+  padding: 30px;
   box-sizing: border-box;
+  box-shadow: 5px 5px 10px -8px grey;
+  box-sizing: border-box;
+}
+
+.block-accroche h2 {
+  font-size: 40px;
+  line-height: 42.5px;
+  font-weight: normal;
+  margin: auto;
 }
 
 .block-accroche button {
   background-color: #49afb7;
-  font-weight: bold;
   border: 1px solid #49afb7;
   color: white;
   border-radius: 5px;
   padding: 10px;
-  margin-bottom: 10px;
+  margin: 40px 0 25px 0;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .images {
@@ -172,7 +187,7 @@
 }
 
 .offer-container button {
-  background-color: #0ab1ba;
+  background-color: #49afb7;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -288,7 +303,7 @@
 /* SIGNUP */
 
 .link-signup {
-  color: #2cb1ba;
+  color: #49afb7;
   font-size: 12px;
   margin-top: 8px;
   text-decoration: none;
@@ -372,7 +387,7 @@
 
 /* PUBLISH */
 
-h2 {
+.publish-form h2 {
   margin-top: 40px;
   font-weight: normal;
 }
@@ -445,7 +460,7 @@ h2 {
 }
 
 .add-btn {
-  background-color: #0ab1ba;
+  background-color: #49afb7;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -462,13 +477,13 @@ h2 {
 }
 
 input[type="file"]::before {
-  border: 2px solid #0ab1ba;
+  border: 2px solid #49afb7;
   border-radius: 5px;
   padding: 15px;
   font-size: 41.2px;
   content: "+ Ajoute une photo";
   display: inline-block;
-  color: #0ab1ba;
+  color: #49afb7;
   font-weight: bold;
   cursor: pointer;
 }

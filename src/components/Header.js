@@ -92,7 +92,7 @@ const Header = (props) => {
                           borderRadius: "4px",
                           background: getTrackBackground({
                             values: rangeValues,
-                            colors: ["#ccc", "#09b0ba", "#ccc"],
+                            colors: ["#ccc", "#49afb7", "#ccc"],
                             min: 0,
                             max: 500,
                           }),
@@ -130,7 +130,7 @@ const Header = (props) => {
                             "Arial,Helvetica Neue,Helvetica,sans-serif",
                           padding: "4px",
                           borderRadius: "4px",
-                          backgroundColor: "#09b0ba",
+                          backgroundColor: "#49afb7",
                         }}
                       >
                         {rangeValues[index] + "€"}
@@ -147,7 +147,7 @@ const Header = (props) => {
               {token ? (
                 <div>
                   <Link to="/publish">
-                    <button className="button-sale">Vends tes articles</button>
+                    <button>Vends tes articles</button>
                   </Link>
                   <button onClick={handleLogout}>Logout</button>
                 </div>

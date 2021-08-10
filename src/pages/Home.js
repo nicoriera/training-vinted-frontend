@@ -88,20 +88,32 @@ const Home = (props) => {
             <div className="offers">
               {offers.map((offer, index) => {
                 return (
-                  <Link to={`/offer/${offer._id}`} key={offer._id}>
+                  <Link
+                    to={`/offer/${offer._id}`}
+                    key={offer._id}
+                    style={{ textDecoration: "none" }}
+                  >
                     <div className="offer-card">
-                      <div>{offer.owner.account.username}</div>
-                      <img
-                        src={offer.product_image.secure_url}
-                        alt={offer.product_image}
-                      />
-                      <div>
-                        {Intl.NumberFormat("fr-FR", {
-                          style: "currency",
-                          currency: "EUR",
-                        }).format(offer.product_price)}
+                      <div className="offer-card-username">
+                        {offer.owner.account.username}
                       </div>
-                      <div>{offer.product_name}</div>
+                      <div className="offer-card-picture">
+                        <img
+                          src={offer.product_image.secure_url}
+                          alt={offer.product_image}
+                        />
+                      </div>
+
+                      <div className="offer-card-infos">
+                        <div>
+                          {Intl.NumberFormat("fr-FR", {
+                            style: "currency",
+                            currency: "EUR",
+                          }).format(offer.product_price)}
+                        </div>
+                        <div>{offer.product_details[1].TAILLE}</div>
+                        <div>{offer.product_details[0].MARQUE}</div>
+                      </div>
                     </div>
                   </Link>
                 );

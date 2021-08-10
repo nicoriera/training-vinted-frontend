@@ -50,7 +50,6 @@ export default function App() {
 
   return (
     <div>
-      <title>Vinted</title>
       <Router>
         <Header
           token={token}

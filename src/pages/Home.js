@@ -91,11 +91,16 @@ const Home = (props) => {
                   <Link to={`/offer/${offer._id}`} key={offer._id}>
                     <div className="offer-card">
                       <div>{offer.owner.account.username}</div>
-
                       <img
                         src={offer.product_image.secure_url}
                         alt={offer.product_image}
                       />
+                      <div>
+                        {Intl.NumberFormat("fr-FR", {
+                          style: "currency",
+                          currency: "EUR",
+                        }).format(offer.product_price)}
+                      </div>
                       <div>{offer.product_name}</div>
                     </div>
                   </Link>

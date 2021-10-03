@@ -38,18 +38,15 @@ const Signup = (props) => {
 
     try {
       event.preventDefault();
-      const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-        {
-          email: email,
-          password: password,
-          username: username,
-          phone: phone,
-        }
-      );
+      const response = await axios.post("http://localhost:5000/user/signup", {
+        email: email,
+        password: password,
+        username: username,
+        phone: phone,
+      });
       if (response.data.token) {
         handleLogin(response.data.token);
-        history.push("/?onboarding=true");
+        history.push("/offers?onboarding=true");
       } else {
         alert("une erreur est survenue veuillez ressayer");
       }
@@ -115,7 +112,7 @@ const Signup = (props) => {
             </form>
           </>
 
-          <Link to="/login">Tu as déjà un compte ? Connecte-toi!</Link>
+          <Link to="user/login">Tu as déjà un compte ? Connecte-toi!</Link>
         </div>
       </div>
     </div>

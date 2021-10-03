@@ -10,7 +10,7 @@ const Publish = (props) => {
   const history = useHistory();
 
   const initialValues = {
-    picture: {},
+    // picture: {},
     title: "",
     description: "",
     brand: "",
@@ -35,19 +35,18 @@ const Publish = (props) => {
   const onSubmit = async (values, { setSubmitting }) => {
     try {
       const formData = new FormData();
-
-      FormData.appennd("picture", values.picture);
-      FormData.appennd("title", values.picture);
-      FormData.appennd("description", values.picture);
-      FormData.appennd("brand", values.picture);
-      FormData.appennd("size", values.picture);
-      FormData.appennd("color", values.picture);
-      FormData.appennd("condition", values.picture);
-      FormData.appennd("city", values.picture);
-      FormData.appennd("price", values.picture);
+      // formData.append("picture", values.picture);
+      formData.append("title", values.title);
+      formData.append("description", values.description);
+      formData.append("brand", values.brand);
+      formData.append("size", values.size);
+      formData.append("color", values.color);
+      formData.append("condition", values.condition);
+      formData.append("city", values.city);
+      formData.append("price", values.price);
 
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
+        "http://localhost:5000/offer/publish",
         formData,
         {
           headers: {
@@ -89,7 +88,7 @@ const Publish = (props) => {
             /* and other goodies */
           }) => (
             <form onSubmit={handleSubmit}>
-              <div className="publish-file-select">
+              {/* <div className="publish-file-select">
                 <div className="publish-preview">
                   <input
                     className="publish-file"
@@ -103,7 +102,7 @@ const Publish = (props) => {
                 </div>
               </div>
 
-              {errors.picture && touched.picture && errors.picture}
+              {errors.picture && touched.picture && errors.picture} */}
               <div className="article">
                 <div className="article-descritption">
                   <div className="article-title-descritption">

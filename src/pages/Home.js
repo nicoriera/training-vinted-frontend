@@ -35,7 +35,7 @@ const Home = (props) => {
         sort: sort ? "price-asc" : "prise-desc",
       });
       const results = await axios.get(
-        `https://lereacteur-vinted-api.herokuapp.com/offers?${queryParams}`
+        `http://localhost:5000/offers?${queryParams}`
       );
       console.log(results);
       setOffers(results.data.offers);
@@ -57,32 +57,31 @@ const Home = (props) => {
 
   return (
     <div>
-      {isLoading ? (
-        <Loader
-          className="loader"
-          type="ThreeDots"
-          color="#49afb7"
-          height={80}
-          width={80}
-        />
-      ) : (
-        <div className="site">
-          <div className="block">
-            <div className="block-background">
-              <div className="images" style={sectionStyle}>
-                <img className="image-forme" src={Forme} alt="forme" />
-              </div>
-            </div>
-            <div className="block-accroche">
-              <h2>Prêt à faire du tri dans vos placards ?</h2>
-              <Link to="/signup">
-                <button>Vends maintenent</button>
-              </Link>
-
-              <div>Découvrir comment ça marche</div>
+      <div className="site">
+        <div className="block">
+          <div className="block-background">
+            <div className="images" style={sectionStyle}>
+              <img className="image-forme" src={Forme} alt="forme" />
             </div>
           </div>
+          <div className="block-accroche">
+            <h2>Prêt à faire du tri dans vos placards ?</h2>
+            <Link to="user/signup">
+              <button>Vends maintenent</button>
+            </Link>
 
+            <div>Découvrir comment ça marche</div>
+          </div>
+        </div>
+        {isLoading ? (
+          <Loader
+            className="loader"
+            type="ThreeDots"
+            color="#49afb7"
+            height={80}
+            width={80}
+          />
+        ) : (
           <div className="container-offers">
             <div className="offers-pages">pages : {paginationLinks}</div>
             <div className="offers">
@@ -97,12 +96,12 @@ const Home = (props) => {
                       <div className="offer-card-username">
                         {offer.owner.account.username}
                       </div>
-                      <div className="offer-card-picture">
+                      {/* <div className="offer-card-picture">
                         <img
                           src={offer.product_image.secure_url}
                           alt={offer.product_image}
                         />
-                      </div>
+                      </div> */}
 
                       <div className="offer-card-infos">
                         <div>
@@ -121,8 +120,8 @@ const Home = (props) => {
             </div>
             <div className="offers-pages">pages : {paginationLinks}</div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

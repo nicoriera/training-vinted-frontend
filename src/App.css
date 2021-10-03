@@ -202,11 +202,13 @@
   color: black;
 }
 
+/* OFFER */
+
 .offer-container {
   align-items: center;
   padding: 50px 20px;
   height: 100rem;
-  background-color: rgb(231, 229, 229);
+  background-color: #ebedee;
 }
 
 .offer-container button {
@@ -219,6 +221,7 @@
   padding: 10px;
   font-size: 18px;
   cursor: pointer;
+  width: 100%;
 }
 
 .offer-container button:active {
@@ -229,22 +232,58 @@
 .offer {
   display: flex;
   justify-content: space-around;
+  height: 30%;
 }
 
 .offer-text {
-  width: 400px;
   display: flex;
   flex-direction: column;
   background-color: white;
   padding: 0 50px;
   box-sizing: border-box;
-  border-radius: 5px;
+  border-radius: 10px;
   justify-content: center;
+  box-shadow: 5px 5px 10px -8px grey;
+  width: 40%;
 }
 
-.offer img {
+.offer-text-price {
+  font-weight: bold;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.offer-text-name {
+  font-size: 16px;
+  color: #999;
+}
+
+.offer-text-description {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: #999;
+  margin: 20px 0;
+}
+
+.offer-text-description > span {
+  margin: 10px 0 0 0;
+  display: flex;
+  width: 100%;
+}
+
+.offer-text-description span {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-right: 10px;
+}
+
+.offer-picture img {
   box-shadow: 5px 5px 10px -8px grey;
   object-fit: cover;
+  height: 100%;
+  border-radius: 10px;
 }
 
 /* SIGNUP */

@@ -8,26 +8,28 @@ const CheckoutForm = () => {
   const [completed, setCompleted] = useState(false);
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    const cardElement = elements.getElement(CardElement);
+    try {
+      event.preventDefault();
+      const cardElement = elements.getElement(CardElement);
 
-    const stripeResponse = await stripe.createToken(cardElement, {
-      name: "Nicolas",
-    });
+      const stripeResponse = await stripe.createToken(cardElement, {
+        name: "Nicolas",
+      });
 
-    console.log(stripeResponse);
+      const stripeToken = stripeResponse.token.id;
 
-    const response = await axios.post(
-      "https://lereacteur-vinted-api.herokuapp.com/payment",
-      {
-        stripeToken: stripeResponse.token.id,
+      const response = await axios.post(
+        "https://lereacteur-vinted-api.herokuapp.com/payment",
+        {
+          token: stripeToken,
+        }
+      );
+
+      if (response.data.status === "succeeded") {
+        setCompleted(true);
       }
-    );
-
-    console.log(response);
-
-    if (response.data.status === "succeeded") {
-      setCompleted(true);
+    } catch (error) {
+      alert("Une erreur est survenue");
     }
   };
 
@@ -41,7 +43,7 @@ const CheckoutForm = () => {
           </button>
         </form>
       ) : (
-        <div>paiement ok</div>
+        <div>Votre payement est validé</div>
       )}
     </div>
   );

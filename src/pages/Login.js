@@ -26,17 +26,14 @@ const Login = (props) => {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/login",
-        {
-          email: email,
-          password: password,
-        }
-      );
+      const response = await axios.post("http://localhost:5000/user/login", {
+        email: email,
+        password: password,
+      });
 
       if (response.data.token) {
         handleLogin(response.data.token);
-        return history.push("/");
+        return history.push("/offers");
       } else {
         alert("Une erreur est survenue, veuillez ressayer");
       }
@@ -76,7 +73,7 @@ const Login = (props) => {
             </form>
           </div>
 
-          <Link className="link-signup" to="/signup">
+          <Link className="link-signup" to="user/signup">
             Pas encore de compte ? Inscris-toi!
           </Link>
         </div>

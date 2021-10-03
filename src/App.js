@@ -10,7 +10,7 @@ import Offer from "./pages/Offer";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Publish from "./pages/Publish";
-import Payement from "./pages/Payement";
+import Payment from "./pages/Payment";
 
 import Header from "./components/Header";
 
@@ -70,9 +70,7 @@ export default function App() {
               sort={sort}
             />
           </Route>
-          <Route path="/offer/:id">
-            <Offer />
-          </Route>
+
           <Route path="/signup">
             <Signup handleLogin={handleLogin} />
           </Route>
@@ -82,8 +80,11 @@ export default function App() {
           <Route path="/publish">
             <Publish token={token} />
           </Route>
-          <Route path="/payement">
-            <Payement token={token} />
+          <Route path="/offer/:id">
+            <Offer />
+          </Route>
+          <Route path="/payment">
+            <Payment token={token} />
           </Route>
         </Switch>
       </Router>

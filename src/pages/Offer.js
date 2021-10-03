@@ -1,20 +1,25 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import Loader from "react-loader-spinner";
 
 const Offer = () => {
   const { id } = useParams();
+  const history = useHistory();
 
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
+  // states for payement send with useHistory
+  const price = data.product_price;
+  const protectionFees = (price / 10).toFixed(2);
+  const shippingFees = (protectionFees * 2).toFixed(2);
+  const total = Number(price) + Number(protectionFees) + Number(shippingFees);
+
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(
-        `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
-      );
+      const response = await axios.get(`http://localhost:5000/offer/${id}`);
 
       setData(response.data);
       setIsLoading(false);
@@ -36,12 +41,12 @@ const Offer = () => {
       ) : (
         <div className="offer-container">
           <div className="offer">
-            <div>
+            {/* <div className="offer-picture">
               <img
                 src={data.product_image.secure_url}
                 alt="product_image.secure_url"
               />
-            </div>
+            </div> */}
             <div className="offer-text">
               <div className="offer-text-price">
                 {Intl.NumberFormat("fr-FR", {
@@ -50,22 +55,38 @@ const Offer = () => {
                 }).format(data.product_price)}
               </div>
               <div className="offer-text-name">{data.product_name}</div>
-
-              {data.product_details.map((elem, index) => {
-                const keys = Object.keys(elem);
-                return (
-                  <p key={index}>
-                    {keys[0]} : {elem[keys[0]]}
-                  </p>
-                );
-              })}
+              <div className="offer-text-description">
+                {data.product_details.map((elem, index) => {
+                  const keys = Object.keys(elem);
+                  return (
+                    <span key={index}>
+                      <span>{keys[0]}</span> <span>{elem[keys[0]]}</span>
+                    </span>
+                  );
+                })}
+              </div>
 
               <div>{data.product_description}</div>
               <div>{data.owner.account.username}</div>
 
-              <Link to="/payement">
-                <button>Acheter</button>
-              </Link>
+              <button
+                onClick={() => {
+                  history.push({
+                    pathname: "/payment",
+                    state: {
+                      productName: data.product_name,
+                      totalPrice: total,
+                      protectionFees: protectionFees,
+                      shippingFees: shippingFees,
+                      price: data.product_price,
+                    },
+                  });
+                }}
+              >
+                Acheter
+              </button>
+
+              {/* utiliser history.push pour partager des infos a une autre page */}
             </div>
           </div>
         </div>

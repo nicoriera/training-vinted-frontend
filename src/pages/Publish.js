@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Redirect, useHistory } from "react-router-dom";
 import { Formik } from "formik";
@@ -8,9 +8,10 @@ import Loader from "react-loader-spinner";
 const Publish = (props) => {
   const { token } = props;
   const history = useHistory();
+  const [preview, setPreview] = useState("");
 
   const initialValues = {
-    // picture: {},
+    picture: {},
     title: "",
     description: "",
     brand: "",
@@ -35,7 +36,7 @@ const Publish = (props) => {
   const onSubmit = async (values, { setSubmitting }) => {
     try {
       const formData = new FormData();
-      // formData.append("picture", values.picture);
+      formData.append("picture", values.picture);
       formData.append("title", values.title);
       formData.append("description", values.description);
       formData.append("brand", values.brand);
@@ -88,21 +89,50 @@ const Publish = (props) => {
             /* and other goodies */
           }) => (
             <form onSubmit={handleSubmit}>
-              {/* <div className="publish-file-select">
-                <div className="publish-preview">
-                  <input
-                    className="publish-file"
-                    type="file"
-                    accept=".png, .jpeg, .jpg, .gif"
-                    name="picture"
-                    onChange={(event) => {
-                      setFieldValue("picture", event.currentTarget.files[0]);
-                    }}
-                  />
-                </div>
+              <div>
+                {preview ? (
+                  <div className="dashed-preview-image">
+                    <img
+                      className="preview-image"
+                      src={preview}
+                      alt="pré-visualisation"
+                    />
+                    <div
+                      className="remove-img-button"
+                      onClick={() => {
+                        setPreview("");
+                      }}
+                    >
+                      X
+                    </div>
+                  </div>
+                ) : (
+                  <div className="publish-file-select">
+                    <div className="publish-preview">
+                      <input
+                        hidden
+                        id="button-file"
+                        className="publish-file"
+                        type="file"
+                        accept=".png, .jpeg, .jpg, .gif"
+                        name="picture"
+                        onChange={(event) => {
+                          setFieldValue(
+                            "picture",
+                            event.currentTarget.files[0]
+                          );
+                          setPreview(
+                            URL.createObjectURL(event.target.files[0])
+                          );
+                        }}
+                      />
+                      <label for="button-file">+ Ajouter une photo</label>
+                    </div>
+                  </div>
+                )}
               </div>
 
-              {errors.picture && touched.picture && errors.picture} */}
+              {errors.picture && touched.picture && errors.picture}
               <div className="article">
                 <div className="article-descritption">
                   <div className="article-title-descritption">
@@ -220,7 +250,16 @@ const Publish = (props) => {
                   type="submit"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? <Loader /> : "Ajouter"}
+                  {isSubmitting ? (
+                    <Loader
+                      type="Circles"
+                      color="#49afb7"
+                      height={20}
+                      width={20}
+                    />
+                  ) : (
+                    "Ajouter"
+                  )}
                 </button>
               </div>
             </form>

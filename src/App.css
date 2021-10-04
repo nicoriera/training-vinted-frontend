@@ -1,25 +1,27 @@
 /* HEADER */
 
 .header {
-  height: 100%;
+  min-height: 90px;
   border-bottom: 1px solid lightgray;
+  border-top: 1px solid white;
 }
 
 .header-content {
   display: flex;
+  min-height: 80px;
   justify-content: space-between;
   align-items: center;
-  margin: 10px 50px;
+  margin: 0 50px;
 }
 
 .filters {
   display: flex;
   flex-direction: column;
+  margin-top: 10px;
 }
 .input-search {
   position: relative;
   display: flex;
-  margin-bottom: 30px;
 }
 .input-search > input {
   width: 500px;
@@ -42,12 +44,23 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-aro;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  justify-content: space-around;
+  width: 480px;
 }
 
-.filter-slider > span {
-  font-size: 10px;
-  margin: 0 10px;
+.toggle-price,
+.toggle-range {
+  display: flex;
+  font-size: 12px;
+  align-items: center;
+  width: 50%;
+}
+
+.toggle-price span,
+.toggle-range span {
+  margin-right: 10px;
 }
 
 .header-picture {
@@ -67,10 +80,10 @@
   margin-right: 10px;
 }
 
-.button-connexion button {
+.button-green {
   background-color: white;
   font-weight: bold;
-  border: 1px solid #49afb7;
+  border: 2px solid #49afb7;
   color: #49afb7;
   border-radius: 5px;
   padding: 6px;
@@ -78,12 +91,34 @@
   cursor: pointer;
 }
 
-.button-connexion button:hover {
+.button-green:hover {
   background-color: #49afb7;
-  border: 1px solid#49AFB7;
+  border: 2px solid #49afb7;
   border-radius: 5px;
   color: white;
   font-weight: bold;
+}
+
+.button-red {
+  background-color: white;
+  font-weight: bold;
+  border: 2px solid red;
+  color: red;
+  border-radius: 5px;
+  padding: 6px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.button-red:hover {
+  background-color: red;
+  font-weight: bold;
+  border: 2px solid red;
+  color: white;
+  border-radius: 5px;
+  padding: 6px;
+  margin-left: 10px;
+  cursor: pointer;
 }
 
 /* HOME */
@@ -345,21 +380,35 @@
 
 .login-form > input {
   border: none;
-  border-bottom: solid 1px #fcced3;
+  border: solid 1px #49afb7;
   height: 30px;
   margin-bottom: 10px;
   outline: none;
   font-size: 20px;
+  padding: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.login-form > input:focus {
+  border: solid 2px lightgray;
 }
 
 .button-login {
   background-color: #49afb7;
   font-weight: bold;
-  border: 1px solid #49afb7;
+  border: 2px solid #49afb7;
   color: white;
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.button-login:hover {
+  background-color: white;
+  color: #49afb7;
 }
 
 /* SIGNUP */
@@ -455,6 +504,7 @@
 }
 .container-publish {
   background-color: #ebedee;
+  padding-bottom: 50px;
 }
 
 .publish-form {
@@ -480,6 +530,58 @@
   align-items: center;
 }
 
+label {
+  border: 2px solid #49afb7;
+  border-radius: 5px;
+  padding: 15px;
+  font-size: 20px;
+  display: inline-block;
+  color: #49afb7;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.dashed-preview-image {
+  display: flex;
+  width: 230px;
+  height: 200px;
+  justify-content: center;
+  box-sizing: border-box;
+  justify-content: space-between;
+  margin: 5px 0 20px 0;
+}
+
+.preview-image {
+  width: 200px;
+  height: 200px;
+  box-shadow: 5px 5px 10px -8px grey;
+  border-radius: 10px;
+  object-fit: cover;
+  box-sizing: border-box;
+}
+
+.remove-img-button {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: #49afb7;
+  box-sizing: border-box;
+  cursor: pointer;
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.remove-img-button:hover {
+  background-color: #fff;
+  border: 1px solid #49afb7;
+  cursor: pointer;
+  color: #49afb7;
+}
 .article {
   display: flex;
   flex-direction: column;
@@ -531,23 +633,19 @@
   padding: 10px;
   font-size: 18px;
   cursor: pointer;
+  font-weight: bold;
+  border: 2px solid #49afb7;
+}
+
+.add-btn:hover {
+  background-color: #fff;
+  color: #49afb7;
+  border: 2px solid #49afb7;
 }
 
 .add-btn:active {
   transform: scale(0.98);
   box-shadow: 5px 5px 10px -8px grey;
-}
-
-input[type="file"]::before {
-  border: 2px solid #49afb7;
-  border-radius: 5px;
-  padding: 15px;
-  font-size: 41.2px;
-  content: "+ Ajoute une photo";
-  display: inline-block;
-  color: #49afb7;
-  font-weight: bold;
-  cursor: pointer;
 }
 
 textarea[type="textarea"] {

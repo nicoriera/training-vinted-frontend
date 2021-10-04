@@ -46,98 +46,106 @@ const Header = (props) => {
 
             {location.pathname === "/" ? (
               <div className="filter-slider">
-                <span>Trier par pix :</span>
+                <div className="toggle-price">
+                  <span>Trier par pix :</span>
 
-                <Toggle
-                  className="toggle"
-                  defaultChecked={sort}
-                  icons={{
-                    checked: (
-                      <FontAwesomeIcon icon={faSortNumericDown} color="white" />
-                    ),
-                    unchecked: (
-                      <FontAwesomeIcon
-                        icon={faSortNumericDownAlt}
-                        color="white"
-                      />
-                    ),
-                  }}
-                  onChange={handleSort}
-                />
-                <span>Prix entre : </span>
+                  <Toggle
+                    className="toggle"
+                    defaultChecked={sort}
+                    icons={{
+                      checked: (
+                        <FontAwesomeIcon
+                          icon={faSortNumericDown}
+                          color="white"
+                        />
+                      ),
+                      unchecked: (
+                        <FontAwesomeIcon
+                          icon={faSortNumericDownAlt}
+                          color="white"
+                        />
+                      ),
+                    }}
+                    onChange={handleSort}
+                  />
+                </div>
 
-                <Range
-                  values={rangeValues}
-                  step={5}
-                  min={0}
-                  max={500}
-                  onChange={(values) => handleRange(values)}
-                  onFinalChange={(values) => handleFinalRange(values)}
-                  renderTrack={({ props, children }) => (
-                    <div
-                      onMouseDown={props.onMouseDown}
-                      onTouchStart={props.onTouchStart}
-                      style={{
-                        ...props.style,
-                        height: "36px",
-                        display: "flex",
-                        width: "50%",
-                      }}
-                    >
+                <div className="toggle-range">
+                  <span>Prix entre : </span>
+
+                  <Range
+                    values={rangeValues}
+                    step={5}
+                    min={0}
+                    max={500}
+                    onChange={(values) => handleRange(values)}
+                    onFinalChange={(values) => handleFinalRange(values)}
+                    renderTrack={({ props, children }) => (
                       <div
-                        ref={props.ref}
+                        onMouseDown={props.onMouseDown}
+                        onTouchStart={props.onTouchStart}
                         style={{
-                          height: "5px",
+                          ...props.style,
+                          height: "36px",
+                          display: "flex",
                           width: "100%",
-                          borderRadius: "4px",
-                          background: getTrackBackground({
-                            values: rangeValues,
-                            colors: ["#ccc", "#49afb7", "#ccc"],
-                            min: 0,
-                            max: 500,
-                          }),
-                          alignSelf: "center",
                         }}
                       >
-                        {children}
+                        <div
+                          ref={props.ref}
+                          style={{
+                            height: "5px",
+                            width: "100%",
+                            borderRadius: "4px",
+                            background: getTrackBackground({
+                              values: rangeValues,
+                              colors: ["#ccc", "#49afb7", "#ccc"],
+                              min: 0,
+                              max: 500,
+                            }),
+                            alignSelf: "center",
+                          }}
+                        >
+                          {children}
+                        </div>
                       </div>
-                    </div>
-                  )}
-                  renderThumb={({ index, props, isDragged }) => (
-                    <div
-                      {...props}
-                      style={{
-                        ...props.style,
-                        height: "15px",
-                        width: "15px",
-                        borderRadius: "50%",
-                        outline: "none",
-                        backgroundColor: "#FFF",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        boxShadow: "0px 2px 6px #AAA",
-                      }}
-                    >
+                    )}
+                    renderThumb={({ index, props, isDragged }) => (
                       <div
+                        {...props}
                         style={{
-                          position: "absolute",
-                          top: "-28px",
-                          color: "#fff",
-                          fontWeight: "bold",
-                          fontSize: "14px",
-                          fontFamily:
-                            "Arial,Helvetica Neue,Helvetica,sans-serif",
-                          padding: "4px",
-                          borderRadius: "4px",
-                          backgroundColor: "#49afb7",
+                          ...props.style,
+                          height: "15px",
+                          width: "15px",
+                          borderRadius: "50%",
+                          outline: "none",
+                          backgroundColor: "#FFF",
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          boxShadow: "0px 2px 6px #AAA",
                         }}
                       >
-                        {rangeValues[index] + "€"}
+                        <div
+                          style={{
+                            position: "absolute",
+                            top: "-25px",
+                            color: "#fff",
+                            fontWeight: "bold",
+                            fontSize: "12px",
+                            fontFamily:
+                              "Arial,Helvetica Neue,Helvetica,sans-serif",
+                            padding: "4px",
+                            borderRadius: "4px",
+                            backgroundColor: "#49afb7",
+                          }}
+                        >
+                          {rangeValues[index] + "€"}
+                        </div>
                       </div>
-                    </div>
-                  )}
-                />
+                    )}
+                  />
+                </div>
               </div>
             ) : null}
           </div>
@@ -147,20 +155,22 @@ const Header = (props) => {
               {token ? (
                 <div>
                   <Link to="/publish">
-                    <button>Vends tes articles</button>
+                    <button className="button-green">Vends tes articles</button>
                   </Link>
-                  <button onClick={handleLogout}>Logout</button>
+                  <button className="button-red" onClick={handleLogout}>
+                    Logout
+                  </button>
                 </div>
               ) : (
                 <div>
                   <Link to="/publish">
-                    <button className="button-sale">Vends tes articles</button>
+                    <button className="button-green">Vends tes articles</button>
                   </Link>
                   <Link to="/signup">
-                    <button>S'incrire</button>
+                    <button className="button-green">S'incrire</button>
                   </Link>
                   <Link to="/login">
-                    <button>Se connecter</button>
+                    <button className="button-green">Se connecter</button>
                   </Link>
                 </div>
               )}

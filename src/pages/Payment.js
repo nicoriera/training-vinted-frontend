@@ -31,7 +31,6 @@ const Payment = (props) => {
           <div>
             <div>Frais protection acheteurs</div>
             <div>
-              {" "}
               {Intl.NumberFormat("fr-FR", {
                 style: "currency",
                 currency: "EUR",

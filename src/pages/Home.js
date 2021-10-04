@@ -51,7 +51,7 @@ const Home = (props) => {
 
   for (let index = 0; index < numberOfLinks; index++) {
     paginationLinks.push(
-      <div onClick={() => handleChangePage(index + 1)}>{index + 1}</div>
+      <div onClick={() => handleChangePage(index + 1)}>{page}</div>
     );
   }
 

@@ -4,6 +4,11 @@
   min-height: 90px;
   border-bottom: 1px solid lightgray;
   border-top: 1px solid white;
+  position: fixed;
+  background-color: white;
+  top: 0;
+  width: 100%;
+  z-index: 10;
 }
 
 .header-content {
@@ -12,6 +17,7 @@
   justify-content: space-between;
   align-items: center;
   margin: 0 50px;
+  background-color: white;
 }
 
 .filters {
@@ -128,6 +134,7 @@
   box-sizing: border-box;
   align-items: center;
   margin-bottom: 50px;
+  margin-top: 123px;
 }
 
 .block-background {
@@ -197,10 +204,11 @@
   margin: 10px;
   font-weight: bold;
 }
-.offers {
+.offer {
   display: flex;
   flex-wrap: wrap;
   cursor: pointer;
+  margin-top: 120px;
 }
 
 .offer-card {
@@ -347,6 +355,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 120px;
 }
 
 .login-form,
@@ -486,6 +495,7 @@
 .publish-form {
   width: 1000px;
   margin: 0 auto;
+  margin-top: 120px;
 }
 
 .publish-file-select {

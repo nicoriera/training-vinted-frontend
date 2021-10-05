@@ -70,7 +70,6 @@ export default function App() {
               sort={sort}
             />
           </Route>
-
           <Route path="/signup">
             <Signup handleLogin={handleLogin} />
           </Route>

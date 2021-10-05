@@ -62,7 +62,7 @@ const Signup = (props) => {
     <div>
       <div className="container-signup">
         <div className="block-signup">
-          <div>S'inscrire</div>
+          <h2>S'inscrire</h2>
           <>
             <form className="signup-form" onSubmit={handleSubmit}>
               <input

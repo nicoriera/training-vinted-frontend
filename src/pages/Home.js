@@ -4,8 +4,9 @@ import Banner from "../assets/pictures/banner_wide-9b45d0aa9a311c4ff6013e9cf3bc2
 import Forme from "../assets/pictures/tear.42d6cec6.svg";
 import * as qs from "qs";
 import Loader from "react-loader-spinner";
-
 import { Link, useLocation } from "react-router-dom";
+
+import Card from "../components/Card";
 
 const Home = (props) => {
   var sectionStyle = {
@@ -83,41 +84,8 @@ const Home = (props) => {
           />
         ) : (
           <div className="container-offers">
-            <div className="offers-pages">pages : {paginationLinks}</div>
-            <div className="offers">
-              {offers.map((offer, index) => {
-                return (
-                  <Link
-                    to={`/offer/${offer._id}`}
-                    key={offer._id}
-                    style={{ textDecoration: "none" }}
-                  >
-                    <div className="offer-card">
-                      <div className="offer-card-username">
-                        {offer.owner.account.username}
-                      </div>
-                      {/* <div className="offer-card-picture">
-                        <img
-                          src={offer.product_image.secure_url}
-                          alt={offer.product_image}
-                        />
-                      </div> */}
+            <Card offers={offers} />
 
-                      <div className="offer-card-infos">
-                        <div>
-                          {Intl.NumberFormat("fr-FR", {
-                            style: "currency",
-                            currency: "EUR",
-                          }).format(offer.product_price)}
-                        </div>
-                        <div>{offer.product_details[1].TAILLE}</div>
-                        <div>{offer.product_details[0].MARQUE}</div>
-                      </div>
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
             <div className="offers-pages">pages : {paginationLinks}</div>
           </div>
         )}

@@ -70,7 +70,7 @@ const Publish = (props) => {
   };
 
   return token ? (
-    <div className="container-publish">
+    <div className="container">
       <div className="publish-form">
         <h2>Vends ton article</h2>
         <Formik

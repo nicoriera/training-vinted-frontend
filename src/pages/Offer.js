@@ -4,7 +4,7 @@ import { useParams, useHistory } from "react-router-dom";
 
 import Loader from "react-loader-spinner";
 
-const Offer = () => {
+const Offer = (props) => {
   const { id } = useParams();
   const history = useHistory();
 
@@ -39,14 +39,14 @@ const Offer = () => {
           width={80}
         />
       ) : (
-        <div className="offer-container">
+        <div className="container">
           <div className="offer">
-            {/* <div className="offer-picture">
+            <div className="offer-picture">
               <img
-                src={data.product_image.secure_url}
-                alt="product_image.secure_url"
+                // src={data.product_image.secure_url}
+                alt={data.product_name}
               />
-            </div> */}
+            </div>
             <div className="offer-text">
               <div className="offer-text-price">
                 {Intl.NumberFormat("fr-FR", {
@@ -70,6 +70,7 @@ const Offer = () => {
               <div>{data.owner.account.username}</div>
 
               <button
+                className="button-buy"
                 onClick={() => {
                   history.push({
                     pathname: "/payment",

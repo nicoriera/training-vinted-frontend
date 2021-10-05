@@ -64,7 +64,7 @@ const Signup = (props) => {
         <div className="block-signup">
           <div>S'inscrire</div>
           <>
-            <form onSubmit={handleSubmit}>
+            <form className="signup-form" onSubmit={handleSubmit}>
               <input
                 className={emailError ? "field-error" : ""}
                 type="text"
@@ -108,11 +108,15 @@ const Signup = (props) => {
                 </p>
               </div>
               <br />
-              <button type="submit">S'incrire</button>
+              <button className="button-signup" type="submit">
+                S'incrire
+              </button>
             </form>
           </>
 
-          <Link to="user/login">Tu as déjà un compte ? Connecte-toi!</Link>
+          <Link className="link-signup" to="user/login">
+            Tu as déjà un compte ? Connecte-toi!
+          </Link>
         </div>
       </div>
     </div>

@@ -121,6 +121,7 @@ const Publish = (props) => {
                             "picture",
                             event.currentTarget.files[0]
                           );
+
                           setPreview(
                             URL.createObjectURL(event.target.files[0])
                           );

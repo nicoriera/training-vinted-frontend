@@ -40,7 +40,11 @@ const CheckoutForm = (props) => {
       {!completed ? (
         <form onSubmit={handleSubmit}>
           <CardElement />
-          <button type="submit" disabled={!stripe || !elements}>
+          <button
+            className="button-pay"
+            type="submit"
+            disabled={!stripe || !elements}
+          >
             Pay
           </button>
         </form>

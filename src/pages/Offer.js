@@ -43,7 +43,7 @@ const Offer = (props) => {
           <div className="offer">
             <div className="offer-picture">
               <img
-                // src={data.product_image.secure_url}
+                src={data.product_image.secure_url}
                 alt={data.product_name}
               />
             </div>

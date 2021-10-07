@@ -17,19 +17,12 @@ const Home = (props) => {
   const location = useLocation();
   qs.parse(location.search.substring(1)); // transforme "?page=1" en objet {page:1}
 
-  const [offers, setOffers] = useState();
-  const [count, setCount] = useState();
+  const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const [page, setPage] = useState(1);
-
-  const handleChangePage = (page) => {
-    setPage(page);
-  };
 
   useEffect(() => {
     const fetchData = async () => {
       const queryParams = qs.stringify({
-        page: page,
         title: search,
         priceMin: rangeValues[0],
         priceMax: rangeValues[1],
@@ -39,22 +32,12 @@ const Home = (props) => {
         `http://localhost:5000/offers?${queryParams}`
       );
       console.log(results);
-      setOffers(results.data.offers);
-      setCount(results.data.count);
+      setData(results.data);
       setIsLoading(false);
     };
 
     fetchData();
-  }, [page, search, rangeValues, sort]);
-
-  const paginationLinks = [];
-  const numberOfLinks = Math.ceil(count / 8);
-
-  for (let index = 0; index < numberOfLinks; index++) {
-    paginationLinks.push(
-      <div onClick={() => handleChangePage(index + 1)}>{page}</div>
-    );
-  }
+  }, [search, rangeValues, sort]);
 
   return (
     <div>
@@ -84,9 +67,10 @@ const Home = (props) => {
           />
         ) : (
           <div className="container-offers">
-            <Card offers={offers} />
-
-            <div className="offers-pages">pages : {paginationLinks}</div>
+            {data.offers &&
+              data.offers.map((offer, index) => {
+                return <Card data={offer} />;
+              })}
           </div>
         )}
       </div>

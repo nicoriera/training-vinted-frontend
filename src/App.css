@@ -39,6 +39,26 @@
   padding-left: 40px;
 }
 
+/* clears the ‘X’ from Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+/* clears the ‘X’ from Internet Explorer */
+input[type="search"]::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+input[type="search"]::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
 .icon-loop {
   width: 20px;
   position: absolute;
@@ -198,6 +218,7 @@
 .container-offers {
   width: 1280px;
   margin: 30px auto auto;
+  display: flex;
 }
 .offers-pages {
   display: flex;
@@ -211,7 +232,7 @@
 }
 
 .offer-card {
-  display: block;
+  display: flex;
   flex-direction: column;
   box-sizing: border-box;
   padding: 0 6px 16px;
@@ -416,15 +437,16 @@
 
 .payement {
   display: flex;
-  height: 100rem;
+  height: 100vh;
   justify-content: center;
+  align-items: center;
   background-color: #ebedee;
+  margin-top: 90px;
 }
 .container-payement {
   padding: 20px;
-  margin-top: 50px;
   display: flex;
-  height: 300px;
+  height: auto;
   width: 500px;
   flex-direction: column;
   border-radius: 5px;
@@ -432,15 +454,23 @@
   box-sizing: border-box;
   box-shadow: 5px 5px 10px -8px grey;
 }
-
 .order-detail {
   display: flex;
   flex-direction: column;
 }
-
 .order-detail > div {
   display: flex;
   justify-content: space-between;
+  font-size: 16px;
+}
+
+.order-detail > div:last-child {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #49afb7;
 }
 
 .checkoutform {
@@ -457,6 +487,34 @@
   color: white;
   font-weight: bold;
   cursor: pointer;
+}
+
+.button-pay {
+  background-color: #49afb7;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  margin: 20px 0;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button-pay:hover {
+  transform: scale(0.98);
+  box-shadow: 5px 5px 10px -8px grey;
+}
+
+.text-pay {
+  margin: 20px 0;
+  font-size: 14px;
+  text-align: justify;
+}
+
+.text-pay > span {
+  font-weight: bold;
 }
 
 /* TOGGLE */

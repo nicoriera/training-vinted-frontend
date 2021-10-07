@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory, Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const Signup = (props) => {
   const { handleLogin } = props;
   const history = useHistory();
   const [username, setUsername] = useState("");
+
   const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState("");
+  const [errorMessage, setErrorMessage] = useState(null);
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
+  const [revealPassword, setRevealPassword] = useState("");
 
   const handleChangeUsername = (event) => {
     const value = event.target.value;
@@ -19,6 +23,11 @@ const Signup = (props) => {
   const handleChangeEmail = (event) => {
     const value = event.target.value;
     setEmail(value);
+    setErrorMessage("");
+  };
+
+  const handleClickRevealPassword = () => {
+    setRevealPassword(!revealPassword);
   };
 
   const handleChangePhone = (event) => {
@@ -32,28 +41,23 @@ const Signup = (props) => {
   };
 
   const handleSubmit = async (event) => {
-    if (!email) {
-      setEmailError("email is mandatory");
-    }
-
     try {
       event.preventDefault();
       const response = await axios.post("http://localhost:5000/user/signup", {
         email: email,
         password: password,
-        username: username,
         phone: phone,
+        username: username,
       });
       if (response.data.token) {
         handleLogin(response.data.token);
-        history.push("/offers?onboarding=true");
+        history.push("/");
       } else {
         alert("une erreur est survenue veuillez ressayer");
       }
     } catch (error) {
-      console.log(error);
       if (error.response.status === 409) {
-        alert(error.response.data.message);
+        setErrorMessage("Cet email a déjà un compte chez nous !");
       }
     }
   };
@@ -66,35 +70,45 @@ const Signup = (props) => {
           <>
             <form className="signup-form" onSubmit={handleSubmit}>
               <input
-                className={emailError ? "field-error" : ""}
                 type="text"
                 value={username}
                 onChange={handleChangeUsername}
                 placeholder="Nom d'utilisateur"
               />
-              {emailError && <div>email is mandatory</div>}
-              <br />
+
               <input
+                className={errorMessage ? "field-error" : ""}
                 type="email"
                 value={email}
                 onChange={handleChangeEmail}
                 placeholder="Email"
               />
-              <br />
+
               <input
                 type="phone"
                 value={phone}
                 onChange={handleChangePhone}
                 placeholder="+33612345678"
               />
-              <br />
+              {revealPassword ? (
+                <FontAwesomeIcon
+                  onClick={handleClickRevealPassword}
+                  icon={faEyeSlash}
+                />
+              ) : (
+                <FontAwesomeIcon
+                  onClick={handleClickRevealPassword}
+                  icon={faEye}
+                />
+              )}
+
               <input
-                type="password"
+                type={revealPassword ? "text" : "password"}
                 value={password}
                 onChange={handleChangePassword}
                 placeholder="Mot de passe"
               />
-              <br />
+
               <div className="block-checkbox">
                 <div>
                   <input type="checkbox" />
@@ -107,7 +121,7 @@ const Signup = (props) => {
                   confirme avoir au moins 18 ans.
                 </p>
               </div>
-              <br />
+
               <button className="button-signup" type="submit">
                 S'incrire
               </button>

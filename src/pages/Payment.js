@@ -16,11 +16,11 @@ const Payment = (props) => {
   return token ? (
     <div className="payement">
       <div className="container-payement">
-        <div>Résumé de la commande</div>
+        <h3>Résumé de la commande</h3>
 
         <div className="order-detail">
           <div>
-            <div>Commande</div>
+            <div className="order-detail-text">Commande</div>
             <span>
               {Intl.NumberFormat("fr-FR", {
                 style: "currency",
@@ -29,7 +29,7 @@ const Payment = (props) => {
             </span>
           </div>
           <div>
-            <div>Frais protection acheteurs</div>
+            <div className="order-detail-text">Frais protection acheteurs</div>
             <div>
               {Intl.NumberFormat("fr-FR", {
                 style: "currency",
@@ -38,7 +38,7 @@ const Payment = (props) => {
             </div>
           </div>
           <div>
-            <div>Frais de port</div>
+            <div className="order-detail-text">Frais de port</div>
             <div>
               {Intl.NumberFormat("fr-FR", {
                 style: "currency",
@@ -46,24 +46,29 @@ const Payment = (props) => {
               }).format(shippingFees)}
             </div>
           </div>
-        </div>
-        <div>
-          <div>TOTAL</div>
+
           <div>
-            {Intl.NumberFormat("fr-FR", {
-              style: "currency",
-              currency: "EUR",
-            }).format(totalPrice)}
+            <div className="order-detail-text">TOTAL</div>
+            <div>
+              {Intl.NumberFormat("fr-FR", {
+                style: "currency",
+                currency: "EUR",
+              }).format(totalPrice)}
+            </div>
           </div>
         </div>
 
-        <div>
-          {`Il ne vous reste plus qu'une étape pour vous offrir ${productName}.
-          Vous allez payer ${Intl.NumberFormat("fr-FR", {
-            style: "currency",
-            currency: "EUR",
-          }).format(totalPrice)} (frais de protection et frais de part
-          inclus).`}
+        <div className="text-pay">
+          Il ne vous reste plus qu'une étape pour vous offrir
+          <span> {productName}</span>. Vous allez payer
+          <span>
+            {" "}
+            {Intl.NumberFormat("fr-FR", {
+              style: "currency",
+              currency: "EUR",
+            }).format(totalPrice)}{" "}
+          </span>
+          (frais de protection et frais de part inclus).
         </div>
         <Elements stripe={stripePromise}>
           <CheckoutForm productName={productName} totalPrice={totalPrice} />

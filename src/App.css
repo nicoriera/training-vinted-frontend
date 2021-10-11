@@ -350,6 +350,13 @@ input[type="search"]::-ms-reveal {
   border-radius: 10px;
 }
 
+/* OFFER - Modal */
+
+.offer-picture img:hover {
+  transform: translate(20px);
+  height: 120%;
+}
+
 /* SIGNUP */
 
 .block-checkbox > p {
@@ -431,6 +438,40 @@ input[type="search"]::-ms-reveal {
   margin-top: 8px;
   text-decoration: none;
   font-weight: bold;
+}
+
+.container-input-password {
+  display: flex;
+  position: relative;
+
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+}
+
+.input-password {
+  display: flex;
+  position: relative;
+  border: none;
+  border: solid 1px #49afb7;
+  height: 30px;
+  width: 100%;
+  outline: none;
+  font-size: 20px;
+  padding: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.input-password:focus {
+  border: solid 2px lightgray;
+}
+
+.reveal-password {
+  position: absolute;
+  right: 0;
+  padding: 5px;
 }
 
 /* PAYEMENT  */
@@ -515,6 +556,14 @@ input[type="search"]::-ms-reveal {
 
 .text-pay > span {
   font-weight: bold;
+}
+
+.checkoutform-validate {
+  display: flex;
+  font-size: 18px;
+  font-weight: bold;
+  justify-content: center;
+  color: #49afb7;
 }
 
 /* TOGGLE */

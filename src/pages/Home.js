@@ -29,7 +29,7 @@ const Home = (props) => {
         sort: sort ? "price-asc" : "prise-desc",
       });
       const results = await axios.get(
-        `http://localhost:5000/offers?${queryParams}`
+        `https://vinted-backend-nicolas.herokuapp.com/offers?${queryParams}`
       );
       console.log(results);
       setData(results.data);
@@ -50,7 +50,7 @@ const Home = (props) => {
           </div>
           <div className="block-accroche">
             <h2>Prêt à faire du tri dans vos placards ?</h2>
-            <Link to="user/signup">
+            <Link to="/signup">
               <button>Vends maintenent</button>
             </Link>
 

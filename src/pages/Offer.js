@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
-
 import Loader from "react-loader-spinner";
 
 const Offer = (props) => {
@@ -19,7 +18,9 @@ const Offer = (props) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`http://localhost:5000/offer/${id}`);
+      const response = await axios.get(
+        `https://vinted-backend-nicolas.herokuapp.com/offer/${id}`
+      );
 
       setData(response.data);
       setIsLoading(false);
@@ -47,6 +48,7 @@ const Offer = (props) => {
                 alt={data.product_name}
               />
             </div>
+
             <div className="offer-text">
               <div className="offer-text-price">
                 {Intl.NumberFormat("fr-FR", {

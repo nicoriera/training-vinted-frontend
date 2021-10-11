@@ -30,10 +30,13 @@ const Login = (props) => {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      const response = await axios.post("http://localhost:5000/user/login", {
-        email: email,
-        password: password,
-      });
+      const response = await axios.post(
+        "https://vinted-backend-nicolas.herokuapp.com/user/login",
+        {
+          email: email,
+          password: password,
+        }
+      );
 
       if (response.data.token) {
         handleLogin(response.data.token);

@@ -43,12 +43,15 @@ const Signup = (props) => {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      const response = await axios.post("http://localhost:5000/user/signup", {
-        email: email,
-        password: password,
-        phone: phone,
-        username: username,
-      });
+      const response = await axios.post(
+        "https://vinted-backend-nicolas.herokuapp.com/user/signup",
+        {
+          email: email,
+          password: password,
+          phone: phone,
+          username: username,
+        }
+      );
       if (response.data.token) {
         handleLogin(response.data.token);
         history.push("/");
@@ -90,24 +93,29 @@ const Signup = (props) => {
                 onChange={handleChangePhone}
                 placeholder="+33612345678"
               />
-              {revealPassword ? (
-                <FontAwesomeIcon
-                  onClick={handleClickRevealPassword}
-                  icon={faEyeSlash}
+              <div className="container-input-password">
+                <input
+                  className="input-password"
+                  type={revealPassword ? "text" : "password"}
+                  value={password}
+                  onChange={handleChangePassword}
+                  placeholder="Mot de passe"
                 />
-              ) : (
-                <FontAwesomeIcon
-                  onClick={handleClickRevealPassword}
-                  icon={faEye}
-                />
-              )}
 
-              <input
-                type={revealPassword ? "text" : "password"}
-                value={password}
-                onChange={handleChangePassword}
-                placeholder="Mot de passe"
-              />
+                <div className="reveal-password">
+                  {revealPassword ? (
+                    <FontAwesomeIcon
+                      onClick={handleClickRevealPassword}
+                      icon={faEyeSlash}
+                    />
+                  ) : (
+                    <FontAwesomeIcon
+                      onClick={handleClickRevealPassword}
+                      icon={faEye}
+                    />
+                  )}
+                </div>
+              </div>
 
               <div className="block-checkbox">
                 <div>
@@ -128,7 +136,7 @@ const Signup = (props) => {
             </form>
           </>
 
-          <Link className="link-signup" to="user/login">
+          <Link className="link-signup" to="/login">
             Tu as déjà un compte ? Connecte-toi!
           </Link>
         </div>

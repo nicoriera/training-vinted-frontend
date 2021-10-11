@@ -13,21 +13,20 @@ const CheckoutForm = (props) => {
       event.preventDefault();
       const cardElement = elements.getElement(CardElement);
       const stripeResponse = await stripe.createToken(cardElement, {
-        name: "Nicolas",
+        name: "L'id de l'acheteur",
       });
       console.log(stripeResponse);
-      const stripeToken = stripeResponse.token.id;
 
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/payment",
+        "https://vinted-backend-nicolas.herokuapp.com/payment",
         {
-          stripeToken,
+          token: stripeResponse.token.id,
           amount: totalPrice,
           title: productName,
         }
       );
 
-      if (response.data.status === "succeeded") {
+      if (response.data) {
         setCompleted(true);
       }
     } catch (error) {
@@ -49,7 +48,7 @@ const CheckoutForm = (props) => {
           </button>
         </form>
       ) : (
-        <div>Votre payement est validé</div>
+        <div className="checkoutform-validate">Merci pour votre achat</div>
       )}
     </div>
   );

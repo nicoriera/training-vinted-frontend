@@ -83,7 +83,7 @@ const Login = (props) => {
           </form>
         </div>
 
-        <Link className="link-signup" to="user/signup">
+        <Link className="link-signup" to="/signup">
           Pas encore de compte ? Inscris-toi!
         </Link>
       </div>

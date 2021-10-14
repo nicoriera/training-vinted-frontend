@@ -99,7 +99,7 @@ const Header = (props) => {
                     <button className="button-green">Vends tes articles</button>
                   </Link>
                   <Link to="/signup">
-                    <button className="button-green">S'incrire</button>
+                    <button className="button-green">S'inscrire</button>
                   </Link>
                   <Link to="/login">
                     <button className="button-green">Se connecter</button>

@@ -42,7 +42,7 @@ const Login = (props) => {
       if (response.data.token) {
         handleLogin(response.data.token);
         setIsLoading(false);
-        return history.push(fromPublish ? "/publish" : "/");
+        history.push(fromPublish ? "/publish" : "/");
       } else {
         alert("Une erreur est survenue, veuillez ressayer");
       }

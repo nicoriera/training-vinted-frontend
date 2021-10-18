@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const Signup = (props) => {
-  const { handleLogin } = props;
+  const { setUser } = props;
   const history = useHistory();
   const [username, setUsername] = useState("");
 
@@ -53,7 +53,7 @@ const Signup = (props) => {
         }
       );
       if (response.data.token) {
-        handleLogin(response.data.token);
+        setUser(response.data.token);
         history.push("/");
       } else {
         alert("une erreur est survenue veuillez ressayer");

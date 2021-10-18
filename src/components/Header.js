@@ -18,7 +18,7 @@ import PriceRange from "../components/PriceRange";
 const Header = (props) => {
   const {
     token,
-    handleLogout,
+    setUser,
     search,
     handleSearch,
     rangeValues,
@@ -89,7 +89,12 @@ const Header = (props) => {
                   <Link to="/publish">
                     <button className="button-green">Vends tes articles</button>
                   </Link>
-                  <button className="button-red" onClick={handleLogout}>
+                  <button
+                    className="button-red"
+                    onClick={() => {
+                      setUser(null);
+                    }}
+                  >
                     Logout
                   </button>
                 </div>

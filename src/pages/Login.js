@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Loader from "react-loader-spinner";
 
 const Login = (props) => {
-  const { handleLogin } = props;
+  const { setUser } = props;
 
   const [isLoading, setIsLoading] = useState(true);
   const [email, setEmail] = useState("");
@@ -40,7 +40,7 @@ const Login = (props) => {
       );
 
       if (response.data.token) {
-        handleLogin(response.data.token);
+        setUser(response.data.token);
         setIsLoading(false);
         history.push(fromPublish ? "/publish" : "/");
       } else {

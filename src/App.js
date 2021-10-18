@@ -15,21 +15,19 @@ import Payment from "./pages/Payment";
 import Header from "./components/Header";
 
 export default function App() {
-  const [token, setToken] = useState(Cookies.get("token") || "");
+  const [token, setToken] = useState(Cookies.get("token") || null);
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState(false);
   const [debouncedSearch] = useDebounce(search, 500);
   const [rangeValues, setRangeValues] = useState([0, 500]);
   const [finalRangeValues, setFinalRangeValues] = useState([0, 500]);
 
-  const handleLogin = (token) => {
-    Cookies.set("token", token);
-    setToken(token);
-  };
-
-  const handleLogout = () => {
+  const setUser = (token) => {
+    if (token) {
+      setToken(token);
+      Cookies.set("token", token);
+    } else setToken(null);
     Cookies.remove("token");
-    setToken("");
   };
 
   const handleSearch = (event) => {
@@ -53,7 +51,7 @@ export default function App() {
       <Router>
         <Header
           token={token}
-          handleLogout={handleLogout}
+          setUser={setUser}
           handleSearch={handleSearch}
           handleSort={handleSort}
           sort={sort}
@@ -71,10 +69,10 @@ export default function App() {
             />
           </Route>
           <Route path="/signup">
-            <Signup handleLogin={handleLogin} />
+            <Signup setUser={setUser} />
           </Route>
           <Route path="/login">
-            <Login handleLogin={handleLogin} />
+            <Login setUser={setUser} />
           </Route>
           <Route path="/publish">
             <Publish token={token} />

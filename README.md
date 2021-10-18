@@ -2,7 +2,11 @@
 
 <h1 align="center">Vinted clone - React</h1>
 <p align="center">
-  <img src="https://github.com/nicoriera/training-vinted-frontend/issues/1#issue-1029389464" alt="vinted-demo"/>
+  
+![Vinted _ Achète, vends ou échange les vêtements, chaussures et accessoires que tu ne portes plus ! (3)](https://user-images.githubusercontent.com/80978348/137779548-12b1c7e1-2fea-4195-9fa7-910f2e51ac70.gif)
+
+
+
 </p>
 
 
@@ -22,7 +26,7 @@ Backend project is here: 👉 [Backend](https://github.com/nicoriera/vinted-back
 * [Formik](https://formik.org/)
 * [FontAwesome](https://fontawesome.com/)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+
 ## Installation and usage
 Be sure, you have installed all dependencies and applications to run React Native project on your computer : [Getting Started with React](https://reactjs.org/docs/getting-started.html).
 

@@ -6,14 +6,15 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const Signup = (props) => {
   const { setUser } = props;
-  const history = useHistory();
-  const [username, setUsername] = useState("");
 
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [revealPassword, setRevealPassword] = useState("");
+
+  const history = useHistory();
 
   const handleChangeUsername = (event) => {
     const value = event.target.value;
@@ -56,7 +57,7 @@ const Signup = (props) => {
         setUser(response.data.token);
         history.push("/");
       } else {
-        alert("une erreur est survenue veuillez ressayer");
+        alert("Une erreur est survenue veuillez ressayer");
       }
     } catch (error) {
       if (error.response.status === 409) {

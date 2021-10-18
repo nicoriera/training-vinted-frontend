@@ -30,6 +30,7 @@ const Login = (props) => {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
+      setIsLoading(true);
       const response = await axios.post(
         "https://vinted-backend-nicolas.herokuapp.com/user/login",
         {

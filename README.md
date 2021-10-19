@@ -1,4 +1,5 @@
-![vinted-banner](https://user-images.githubusercontent.com/49198371/132921092-c70a9445-0a3a-41f2-aa1d-4bc58e62ad38.png)
+![Vinted_logo](https://user-images.githubusercontent.com/80978348/137881249-2960dd21-eb17-49e4-a27a-577252f86d82.png)
+
 
 <h1 align="center">Vinted clone - React</h1>
 <p align="center">

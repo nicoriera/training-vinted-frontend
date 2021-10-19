@@ -35,7 +35,7 @@ Be sure, you have installed all dependencies and applications to run React Nativ
 Clone this repository:
 ```
 git clone https://github.com/nicoriera/training-vinted-frontend
-cd vinted-frontend
+cd training-vinted-frontend
 ```
 
 Install packages:

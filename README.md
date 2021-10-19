@@ -4,7 +4,7 @@
 <h1 align="center">Vinted clone - React</h1>
 <p align="center">
   
-![Vinted _ Achète, vends ou échange les vêtements, chaussures et accessoires que tu ne portes plus ! (3)](https://user-images.githubusercontent.com/80978348/137779548-12b1c7e1-2fea-4195-9fa7-910f2e51ac70.gif)
+<img src="https://user-images.githubusercontent.com/80978348/137779548-12b1c7e1-2fea-4195-9fa7-910f2e51ac70.gif"/>
 
 
 
